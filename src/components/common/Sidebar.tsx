@@ -28,14 +28,21 @@ const Sidebar = () => {
     <>
       <div className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg transition-transform transform md:translate-x-0 ${isOpen ? 'translate-x-0 z-10' : '-translate-x-full'} md:block overflow-y-auto`}>
         <div className="flex items-center justify-between p-4 border-b border-gray-300">
-          <h2 className="text-xl ">VeloraMed</h2>
+          <div className='flex items-center justify-start w-full'>
+            <Image
+              src="/logoVerola.png"
+              alt="Descrição da imagem"
+              width={150}
+              height={50}
+            />
+          </div>
           <button onClick={toggleSidebar} className="text-2xl md:hidden">
             <FiX />
           </button>
         </div>
         <ul className="p-4 space-y-4 text-sm">
           <li onClick={() => handleTabClick('Integração')} className={`p-2 rounded-md cursor-pointer hover:bg-gray-100 ${activeTab === 'Integração' ? 'text-[#2955D9] border border-[#2955D9]' : ''}`}>
-            <Link href="/integration" className="flex items-center">
+            <Link href="/businessConnect/dashboard" className="flex items-center">
               <MdOutlineDashboard className="mr-2" /> Dashboard
             </Link>
           </li>
@@ -48,7 +55,7 @@ const Sidebar = () => {
             </div>
             {gestaoOpen && (
               <ul className="ml-4 mt-2 space-y-2">
-                <li><Link href="/gestao/medicos" className="block p-2 hover:bg-gray-100">Médicos</Link></li>
+                <li><Link href="/businessConnect/gestao/medicos" className="block p-2 hover:bg-gray-100">Médicos</Link></li>
                 <li><Link href="/gestao/atendentes" className="block p-2 hover:bg-gray-100">Atendentes</Link></li>
               </ul>
             )}
@@ -63,7 +70,7 @@ const Sidebar = () => {
             {cadastroOpen && (
               <ul className="ml-4 mt-2 space-y-2">
                 <li><Link href="/cadastro/convenios" className="block p-2 hover:bg-gray-100">Convênios</Link></li>
-                <li><Link href="/cadastro/tabela-valores" className="block p-2 hover:bg-gray-100">Tabela de valores</Link></li>
+                <li><Link href="/cadastro/tabela" className="block p-2 hover:bg-gray-100">Tabela de valores</Link></li>
                 <li><Link href="/cadastro/agenda" className="block p-2 hover:bg-gray-100">Agenda</Link></li>
               </ul>
             )}

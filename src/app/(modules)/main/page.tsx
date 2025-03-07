@@ -8,7 +8,7 @@ export default function Home() {
 
     const handleClick = (userType: string) => {
         if (userType === "Administrador") {
-            router.push("/businessConnect/integration/");
+            router.push("/businessConnect/dashboard/");
         } else if (userType === "Médico") {
             //router.push("/login");
         } else if (userType === "Atendente") {
