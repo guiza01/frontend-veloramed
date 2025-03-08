@@ -56,7 +56,7 @@ const Sidebar = () => {
             {gestaoOpen && (
               <ul className="ml-4 mt-2 space-y-2">
                 <li><Link href="/businessConnect/gestao/medicos" className="block p-2 hover:bg-gray-100">Médicos</Link></li>
-                <li><Link href="/gestao/atendentes" className="block p-2 hover:bg-gray-100">Atendentes</Link></li>
+                <li><Link href="/businessConnect/gestao/atendentes" className="block p-2 hover:bg-gray-100">Atendentes</Link></li>
               </ul>
             )}
           </li>
