@@ -2,12 +2,26 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowLeft, Eye, EyeOff, ClipboardCopy } from "lucide-react";
+import { Disclosure } from "@headlessui/react";
+import { Dialog, DialogOverlay, DialogContent, DialogTitle } from "@radix-ui/react-dialog";
+import { ArrowLeft, Eye, EyeOff, ClipboardCopy, Check, Upload } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
-const doctor = {
+interface Doctor {
+    index: number;
+    name: string;
+    specialty: string;
+    plan: string;
+    room: string;
+    avatar: string;
+    email: string;
+    password: string;
+    keyPix: string;
+}
+
+const doctor: Doctor = {
     index: 1,
     name: 'Maria Elisângela dos Santos',
     specialty: 'Cardiologia',
@@ -23,6 +37,26 @@ export default function MedicsEdit() {
     const router = useRouter();
     const [showPassword, setShowPassword] = useState(false);
     const [copied, setCopied] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [step, setStep] = useState(1);
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files && event.target.files[0]) {
+            setSelectedFile(event.target.files[0]);
+        }
+    };
+
+    const [descricao, setDescricao] = useState('');
+    const [descricaoCount, setDescricaoCount] = useState(0);
+
+    const handleDescricaoChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        const newDescricao = e.target.value;
+        if (newDescricao.length <= 300) {
+            setDescricao(newDescricao);
+            setDescricaoCount(newDescricao.length);
+        }
+    };
 
     const handleCopy = (text: string) => {
         navigator.clipboard.writeText(text);
@@ -40,6 +74,11 @@ export default function MedicsEdit() {
             ...prev,
             [menu]: !prev[menu]
         }));
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setStep(1);
     };
 
     return (
@@ -213,6 +252,259 @@ export default function MedicsEdit() {
                     </div>
                 )}
             </div>
+
+            <div className="flex items-center justify-end p-6 gap-4">
+                <Button variant={'ghost'}>Excluir</Button>
+                <Button onClick={() => setIsModalOpen(true)}>Editar</Button>
+            </div>
+
+            <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+                <DialogOverlay className="fixed inset-0 bg-black/50" />
+                <DialogContent className="fixed bg-white p-6 rounded-lg shadow-lg top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[90vh] overflow-y-auto">
+                    <DialogTitle className="text-lg font-semibold mb-4">Edição de Cadastro</DialogTitle>
+
+                    <div className="flex justify-between border rounded p-6 gap-4 my-4">
+                        <div className="flex items-center gap-2">
+                            <div
+                                className={`w-8 h-8 flex items-center justify-center rounded-full border-2 
+                        ${step > 1 ? "bg-black text-white border-black" : step === 1 ? "border-black" : "border-gray-300"}`}
+                            >
+                                {step > 1 ? <Check size={16} /> : "1"}
+                            </div>
+                            <label>Informações Pessoais</label>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                            <div
+                                className={`w-8 h-8 flex items-center justify-center rounded-full border-2 
+                        ${step > 2 ? "bg-black text-white border-black" : step === 2 ? "border-black" : "border-gray-300"}`}
+                            >
+                                {step > 2 ? <Check size={16} /> : "2"}
+                            </div>
+                            <label>Resumo Profissional</label>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                            <div
+                                className={`w-8 h-8 flex items-center justify-center rounded-full border-2 
+                        ${step === 3 ? "border-black" : step > 3 ? "bg-black text-white border-black" : "border-gray-300"}`}
+                            >
+                                {step > 3 ? <Check size={16} /> : "3"}
+                            </div>
+                            <label>Senha</label>
+                        </div>
+                    </div>
+
+                    {step === 1 && (
+                        <div>
+                            <span className='text-[14px]'>Nome completo <span className='text-[red]'>*</span></span>
+                            <Input placeholder="Nome completo" className="mb-6" defaultValue={doctor.name} />
+
+                            <span className='text-[14px]'>E-mail <span className='text-[red]'>*</span></span>
+                            <Input placeholder="E-mail" className="mb-6" defaultValue={doctor.email}/>
+
+                            <span className='text-[14px]'>
+                                Senha <span className='text-[red]'>*</span>
+                            </span>
+                            <div className="relative">
+                                <Input
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder="********"
+                                    className="mb-6 pr-10"
+                                    defaultValue={doctor.password}
+                                />
+                                <button
+                                    type="button"
+                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                </button>
+                            </div>
+
+                            <span className='text-[14px]'>Chave PIX <span className='text-[red]'>*</span></span>
+                            <Input placeholder="Chave PIX" className="mb-6" defaultValue={doctor.keyPix}/>
+
+                            <span className='text-[14px]'>Número da sala <span className='text-[red]'>*</span></span>
+                            <Input placeholder="Número da sala" className="mb-6" defaultValue={doctor.room}/>
+
+                            <span className='text-[14px]'>Foto do Profissional <span className='text-[red]'>*</span></span>
+                            <div className="flex flex-col items-center">
+                                <label
+                                    htmlFor="fileUpload"
+                                    className="cursor-pointer flex w-full items-center justify-center gap-2 bg-[#FAFAFA] px-4 py-2 rounded-lg border border-black border-dashed hover:bg-gray-300 transition"
+                                >
+                                    <Upload size={18} />
+                                    {selectedFile ? selectedFile.name : "Clique para efetuar o upload!"}
+                                </label>
+                                <input
+                                    id="fileUpload"
+                                    type="file"
+                                    accept="image/*"
+                                    className="hidden"
+                                    onChange={handleFileChange}
+                                />
+                            </div>
+                            <div className="flex items-center justify-end gap-4 mt-4">
+                                <Button onClick={handleCloseModal} variant="outline" className="w-50%">Cancelar</Button>
+                                <Button onClick={() => setStep(2)} className="w-50%">Próximo</Button>
+                            </div>
+                        </div>
+                    )}
+
+                    {step === 2 && (
+                        <div>
+                            <span className="text-[14px]">
+                                Especialidade e Convênio <span className="text-[red]">*</span>
+                            </span>
+                            <Input placeholder="Especialidade e Convênio" className="mb-6" />
+
+                            <span className="text-[14px]">Este profissional efetua:</span>
+
+                            <Disclosure>
+                                {({ open }) => (
+                                    <div className="flex flex-col items-start w-full px-4 py-2 mb-6 border border-gray-300 rounded-md text-left text-black">
+                                        <Disclosure.Button
+                                            className={`flex w-full text-[14px] items-center justify-between ${open ? "pb-2 border-b border-gray-300" : ""}`}
+                                        >
+                                            <span>Consulta</span>
+                                            {open ? <FaChevronUp /> : <FaChevronDown />}
+                                        </Disclosure.Button>
+                                        <Disclosure.Panel className="mt-4 w-full">
+                                            <span className="text-[14px]">Tempo de atendimento (por convênio)</span>
+                                            <Input placeholder="Digite aqui" className="mb-6 w-full" />
+                                            <span className="text-[14px]">Tempo de atendimento (particular)</span>
+                                            <Input placeholder="Digite aqui" className="mb-6" />
+                                        </Disclosure.Panel>
+                                    </div>
+                                )}
+                            </Disclosure>
+
+                            <Disclosure>
+                                {({ open }) => (
+                                    <div className="flex flex-col items-start w-full px-4 py-2 mb-6 border border-gray-300 rounded-md text-left text-black">
+                                        <Disclosure.Button
+                                            className={`flex w-full text-[14px] items-center justify-between ${open ? "pb-2 border-b border-gray-300" : ""}`}
+                                        >
+                                            <span>Exame</span>
+                                            {open ? <FaChevronUp /> : <FaChevronDown />}
+                                        </Disclosure.Button>
+
+                                        <Disclosure.Panel className="mt-4 w-full">
+                                            <span className="text-[14px]">Tempo de atendimento (por convênio)</span>
+                                            <Input placeholder="Digite aqui" className="mb-6" />
+                                            <span className="text-[14px]">Tempo de atendimento (particular)</span>
+                                            <Input placeholder="Digite aqui" className="mb-6" />
+                                        </Disclosure.Panel>
+                                    </div>
+                                )}
+                            </Disclosure>
+
+                            <Disclosure>
+                                {({ open }) => (
+                                    <div className="flex flex-col items-start w-full px-4 py-2 mb-6 border border-gray-300 rounded-md text-left text-black">
+                                        <Disclosure.Button
+                                            className={`flex w-full text-[14px] items-center justify-between ${open ? "pb-2 border-b border-gray-300" : ""}`}
+                                        >
+                                            <span>Procedimento</span>
+                                            {open ? <FaChevronUp /> : <FaChevronDown />}
+                                        </Disclosure.Button>
+
+                                        <Disclosure.Panel className="mt-4 w-full">
+                                            <span className="text-[14px]">Nome do procedimento</span>
+                                            <Input placeholder="Digite aqui" className="mb-6" />
+                                            <span className="text-[14px]">Tempo de atendimento</span>
+                                            <Input placeholder="Digite aqui" className="mb-6" />
+                                            <span className="text-[14px]">Valor</span>
+                                            <Input placeholder="Digite aqui" className="mb-6" />
+                                            <span className="text-[14px]">Descrição</span>
+                                            <div className="mb-6">
+                                                <textarea
+                                                    placeholder="Digite aqui"
+                                                    value={descricao}
+                                                    onChange={handleDescricaoChange}
+                                                    className="w-full text-[15px] p-2 border border-gray-300 rounded-md"
+                                                    maxLength={300}
+                                                />
+                                                <div className="text-sm text-gray-500 mt-1">
+                                                    {descricaoCount}/300 caracteres
+                                                </div>
+                                            </div>
+                                            <Button variant={'ghost'} >+ Adicionar Procedimento</Button>
+                                        </Disclosure.Panel>
+                                    </div>
+                                )}
+                            </Disclosure>
+
+                            <div className="flex items-center justify-end gap-4 mt-4">
+                                <Button onClick={() => setStep(1)} variant="outline" className=" w-50%">Voltar</Button>
+                                <Button onClick={() => setStep(3)} className="w-50%">Próximo</Button>
+                            </div>
+                        </div>
+                    )}
+
+                    {step === 3 && (
+                        <div>
+                            <span className='text-[14px]'>
+                                Senha atual <span className='text-[red]'>*</span>
+                            </span>
+                            <div className="relative">
+                                <Input
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder="********"
+                                    className="mb-6 pr-10"
+                                    defaultValue={doctor.password}
+                                />
+                                <button
+                                    type="button"
+                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                </button>
+                            </div>
+                            <span className='text-[14px]'>
+                                Nova senha <span className='text-[red]'>*</span>
+                            </span>
+                            <div className="relative">
+                                <Input
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder="********"
+                                    className="mb-6 pr-10"
+                                />
+                                <button
+                                    type="button"
+                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                </button>
+                            </div>
+                            <span className='text-[14px]'>
+                                Repita sua nova senha <span className='text-[red]'>*</span>
+                            </span>
+                            <div className="relative">
+                                <Input
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder="********"
+                                    className="mb-6 pr-10"
+                                />
+                                <button
+                                    type="button"
+                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                </button>
+                            </div>
+                            <div className="flex items-center justify-end gap-4 mt-4">
+                                <Button onClick={handleCloseModal} variant="outline" className="w-50%">Cancelar</Button>
+                                <Button className="bg-black text-white w-50%">Salvar Alterações</Button>
+                            </div>
+                        </div>
+                    )}
+                </DialogContent>
+            </Dialog>
 
         </div>
     );
