@@ -70,7 +70,7 @@ const Sidebar = () => {
             {cadastroOpen && (
               <ul className="ml-4 mt-2 space-y-2">
                 <li><Link href="/businessConnect/cadastro/convenios" className="block p-2 hover:bg-gray-100">Convênios</Link></li>
-                <li><Link href="/businessConnect/cadastro/tabela" className="block p-2 hover:bg-gray-100">Tabela de valores</Link></li>
+                <li><Link href="/businessConnect/cadastro/tabelas" className="block p-2 hover:bg-gray-100">Tabela de valores</Link></li>
                 <li><Link href="/businessConnect/cadastro/agenda" className="block p-2 hover:bg-gray-100">Agenda</Link></li>
               </ul>
             )}
