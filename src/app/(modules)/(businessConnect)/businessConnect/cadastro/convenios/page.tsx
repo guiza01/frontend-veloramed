@@ -215,14 +215,16 @@ export default function ConveriosList() {
                                 </div>
                                 <Button className="mt-2" variant={'ghost'}>
                                     <FaPlus />
-                                    {step === 3 ? "Confirmar Cadastro" : "Adicionar procedimento"}
+                                    Adicionar procedimento
                                 </Button>
                             </div>
                         )}
 
                         <div className="flex items-center justify-end gap-4 mt-4">
                             <Button variant="outline" className="w-50%" onClick={prevStep}>Voltar</Button>
-                            <Button onClick={nextStep} className="w-50%">Próximo</Button>
+                            <Button onClick={nextStep} className="w-50%">
+                                {step === 3 ? "Confirmar Cadastro" : "Próximo"}
+                            </Button>
                         </div>
                     </div>
                 </DialogContent>
