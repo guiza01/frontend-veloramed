@@ -30,7 +30,7 @@ export default function Home() {
                 <h1 className='text-2xl mb-5 font-bold text-center'>Olá, Alvaro!</h1>
                 <p className='mb-10 text-center'>Escolha abaixo o módulo que deseja acessar.</p>
                 <div className="w-full flex flex-row gap-4 justify-center">
-                    <div className="bg-white border-2 rounded-md flex flex-col items-start gap-2 p-8 w-1/3"
+                    <button className="bg-white border-2 rounded-md flex flex-col items-start gap-2 p-8 w-1/3"
                         onClick={() => handleClick("Administrador")}
                     >
                         <Image
@@ -40,14 +40,14 @@ export default function Home() {
                             src={"/graph_5.png"}
                         />
                         <p className="font-semibold text-[#373839]">Busines Connect</p>
-                    </div>
-                    <div className="bg-white border-2 rounded-md flex flex-col items-start gap-2 p-8 w-1/3"
+                    </button>
+                    <button className="bg-white border-2 rounded-md flex flex-col items-start gap-2 p-8 w-1/3"
                         onClick={() => handleClick("Médico")}
                     >
                         <LuStethoscope size={27} color="#F2AC29" className="ml-3" />
                         <p className="font-semibold text-[#373839]">Med Assist</p>
-                    </div>
-                    <div className="bg-white border-2 rounded-md flex flex-col items-start gap-2 p-8 w-1/3"
+                    </button>
+                    <button className="bg-white border-2 rounded-md flex flex-col items-start gap-2 p-8 w-1/3"
                         onClick={() => handleClick("Atendente")}
                     >
                         <Image
@@ -57,7 +57,7 @@ export default function Home() {
                             src={"/agenda.svg"}
                         />
                         <p className="font-semibold text-[#373839] mt-1">Engage Med</p>
-                    </div>
+                    </button>
                 </div>
 
             </div>
