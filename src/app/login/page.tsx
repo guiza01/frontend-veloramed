@@ -1,8 +1,8 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -10,13 +10,29 @@ import Link from "next/link";
 export default function Login() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const [userType, setUserType] = useState<string | null>(null);
+
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const type = searchParams.get("userType");
+    setUserType(type);
+  }, [searchParams]);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
 
   const handleClick = () => {
-    router.push("/main");
+    console.log("User: ", userType);
+
+    const routes: Record<string, string> = {
+      Administrador: "/main",
+      Médico: "/medassist/dashboard/",
+      Atendente: "/engagemed/integration/",
+    };
+
+    router.push(routes[userType || ""] || "/");
   };
 
   return (
