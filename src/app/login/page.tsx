@@ -1,13 +1,13 @@
 "use client";
+import { Suspense, useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState, useEffect } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export default function Login() {
+function LoginContent() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [userType, setUserType] = useState<string | null>(null);
@@ -88,7 +88,9 @@ export default function Login() {
                 <Button onClick={handleClick}>Entrar</Button>
 
                 <div className="flex justify-start">
-                  <Link href={"/forgot-password"} className="text-xs font-semibold">Esqueci minha senha</Link>
+                  <Link href={"/forgot-password"} className="text-xs font-semibold">
+                    Esqueci minha senha
+                  </Link>
                 </div>
               </div>
             </div>
@@ -99,5 +101,13 @@ export default function Login() {
         <img src={"/Login2.png"} alt="Login2" className="w-full h-full" />
       </div>
     </main>
+  );
+}
+
+export default function Login() {
+  return (
+    <Suspense fallback={<div>Carregando...</div>}>
+      <LoginContent />
+    </Suspense>
   );
 }
