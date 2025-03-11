@@ -1,10 +1,11 @@
 "use client";
 
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Disclosure } from "@headlessui/react";
 import { Dialog, DialogOverlay, DialogContent, DialogTitle } from "@radix-ui/react-dialog";
-import { ArrowLeft, Eye, EyeOff, ClipboardCopy, Check, Upload } from "lucide-react";
+import { ArrowLeft, Eye, EyeOff, ClipboardCopy, Check, Upload, Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
@@ -254,7 +255,25 @@ export default function MedicsEdit() {
             </div>
 
             <div className="flex items-center justify-end p-6 gap-4">
-                <Button variant={'ghost'}>Excluir</Button>
+                <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                        <Button variant="ghost">
+                            <Trash />
+                        </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                            <AlertDialogTitle>Tem certeza?</AlertDialogTitle>
+                            <AlertDialogDescription>
+                                Esta ação não pode ser desfeita. Isso excluirá permanentemente o item.
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                            <AlertDialogAction>Excluir</AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
                 <Button onClick={() => setIsModalOpen(true)}>Editar</Button>
             </div>
 
@@ -301,7 +320,7 @@ export default function MedicsEdit() {
                             <Input placeholder="Nome completo" className="mb-6" defaultValue={doctor.name} />
 
                             <span className='text-[14px]'>E-mail <span className='text-[red]'>*</span></span>
-                            <Input placeholder="E-mail" className="mb-6" defaultValue={doctor.email}/>
+                            <Input placeholder="E-mail" className="mb-6" defaultValue={doctor.email} />
 
                             <span className='text-[14px]'>
                                 Senha <span className='text-[red]'>*</span>
@@ -323,10 +342,10 @@ export default function MedicsEdit() {
                             </div>
 
                             <span className='text-[14px]'>Chave PIX <span className='text-[red]'>*</span></span>
-                            <Input placeholder="Chave PIX" className="mb-6" defaultValue={doctor.keyPix}/>
+                            <Input placeholder="Chave PIX" className="mb-6" defaultValue={doctor.keyPix} />
 
                             <span className='text-[14px]'>Número da sala <span className='text-[red]'>*</span></span>
-                            <Input placeholder="Número da sala" className="mb-6" defaultValue={doctor.room}/>
+                            <Input placeholder="Número da sala" className="mb-6" defaultValue={doctor.room} />
 
                             <span className='text-[14px]'>Foto do Profissional <span className='text-[red]'>*</span></span>
                             <div className="flex flex-col items-center">
