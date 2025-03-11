@@ -42,7 +42,7 @@ const Sidebar = () => {
         </div>
         <ul className="p-4 space-y-4 text-sm">
           <li onClick={() => handleTabClick('Integração')} className={`p-2 rounded-md cursor-pointer hover:bg-gray-100 ${activeTab === 'Integração' ? 'text-[#2955D9] border border-[#2955D9]' : ''}`}>
-            <Link href="/businessConnect/dashboard" className="flex items-center">
+            <Link href="/administrator/businessConnect/dashboard" className="flex items-center">
               <MdOutlineDashboard className="mr-2" /> Dashboard
             </Link>
           </li>
@@ -55,8 +55,8 @@ const Sidebar = () => {
             </div>
             {gestaoOpen && (
               <ul className="ml-4 mt-2 space-y-2">
-                <li><Link href="/businessConnect/gestao/medicos" className="block p-2 hover:bg-gray-100">Médicos</Link></li>
-                <li><Link href="/businessConnect/gestao/atendentes" className="block p-2 hover:bg-gray-100">Atendentes</Link></li>
+                <li><Link href="/administrator/businessConnect/gestao/medicos" className="block p-2 hover:bg-gray-100">Médicos</Link></li>
+                <li><Link href="/administrator/businessConnect/gestao/atendentes" className="block p-2 hover:bg-gray-100">Atendentes</Link></li>
               </ul>
             )}
           </li>
@@ -69,9 +69,9 @@ const Sidebar = () => {
             </div>
             {cadastroOpen && (
               <ul className="ml-4 mt-2 space-y-2">
-                <li><Link href="/businessConnect/cadastro/convenios" className="block p-2 hover:bg-gray-100">Convênios</Link></li>
-                <li><Link href="/businessConnect/cadastro/tabelas" className="block p-2 hover:bg-gray-100">Tabela de valores</Link></li>
-                <li><Link href="/businessConnect/cadastro/agenda" className="block p-2 hover:bg-gray-100">Agenda</Link></li>
+                <li><Link href="/administrator/businessConnect/cadastro/convenios" className="block p-2 hover:bg-gray-100">Convênios</Link></li>
+                <li><Link href="/administrator/businessConnect/cadastro/tabelas" className="block p-2 hover:bg-gray-100">Tabela de valores</Link></li>
+                <li><Link href="/administrator/businessConnect/cadastro/agenda" className="block p-2 hover:bg-gray-100">Agenda</Link></li>
               </ul>
             )}
           </li>

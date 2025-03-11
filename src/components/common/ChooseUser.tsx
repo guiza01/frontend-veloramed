@@ -8,16 +8,6 @@ import { useState } from "react";
 export default function ChooseUser() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [selectedUser, setSelectedUser] = useState("");
-
-  const handleClick = (userType: string) => {
-    setSelectedUser(userType);
-    if (userType === "Médico") {
-      setOpen(true);
-    } else {
-      router.push(`/login?userType=${encodeURIComponent(userType)}`);
-    }
-  };
 
   return (
     <main className="w-full min-h-screen flex justify-center items-center">
@@ -35,7 +25,7 @@ export default function ChooseUser() {
 
           <div
             className="w-[300px] h-full p-[1px] rounded-md bg-gradient-to-r from-[#2955D9] via-[#27B9F2] via-[#F2AC29] to-[#F23E2E] cursor-pointer"
-            onClick={() => handleClick("Administrador")}
+            onClick={() => router.push("/administrator/login")}
           >
             <div className="w-full bg-white h-full rounded-md flex items-center justify-center gap-2 p-8">
               <Image width={23} height={27} alt="Administrador" src="/graph_5.png" />
@@ -45,7 +35,7 @@ export default function ChooseUser() {
 
           <div
             className="w-[300px] h-full p-[1px] rounded-md bg-gradient-to-r from-[#2955D9] via-[#27B9F2] via-[#F2AC29] to-[#F23E2E] cursor-pointer"
-            onClick={() => handleClick("Médico")}
+            onClick={() => router.push("/medassist/login")}
           >
             <div className="w-full bg-white h-full rounded-md flex items-center gap-2 p-8">
               <LuStethoscope size={27} color="#F2AC29" />
@@ -55,7 +45,7 @@ export default function ChooseUser() {
 
           <div
             className="w-[300px] h-full p-[1px] rounded-md bg-gradient-to-r from-[#2955D9] via-[#27B9F2] via-[#F2AC29] to-[#F23E2E] cursor-pointer"
-            onClick={() => handleClick("Atendente")}
+            onClick={() => router.push("/engagemed/login")}
           >
             <div className="w-full bg-white h-full rounded-md flex items-center gap-2 p-8">
               <Image width={23} height={27} alt="Atendente" src="/agenda.svg" />
@@ -73,7 +63,7 @@ export default function ChooseUser() {
           <DialogHeader>
             <DialogTitle>Em desenvolvimento</DialogTitle>
             <DialogDescription>
-              O módulo de {selectedUser} está em desenvolvimento. Por favor, aguarde.
+              O módulo está em desenvolvimento. Por favor, aguarde.
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
