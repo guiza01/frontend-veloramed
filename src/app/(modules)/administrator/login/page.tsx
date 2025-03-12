@@ -16,7 +16,7 @@ function LoginContent() {
   };
 
   const handleClick = () => {
-    router.push("/administrator/businessConnect/dashboard");
+    router.push("/administrator/main");
   };
 
   return (

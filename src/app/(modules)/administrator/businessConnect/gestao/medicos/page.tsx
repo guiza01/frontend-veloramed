@@ -91,7 +91,7 @@ export default function MedicosList() {
                                 <p className="font-semibold">{doctor.name}</p>
                                 <p className="text-sm text-gray-500">{doctor.specialty} • {doctor.plan} • {doctor.room}</p>
                             </div>
-                            <Button variant="outline" onClick={() => router.push(`/businessConnect/gestao/medicos/edit`)}>Detalhes</Button>
+                            <Button variant="outline" onClick={() => router.push(`/administrator/businessConnect/gestao/medicos/edit`)}>Detalhes</Button>
                         </CardContent>
                     </Card>
                 ))}

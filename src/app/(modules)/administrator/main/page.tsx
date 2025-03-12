@@ -8,11 +8,11 @@ export default function Home() {
 
     const handleClick = (userType: string) => {
         if (userType === "Administrador") {
-            router.push("/businessConnect/dashboard/");
+            router.push("/administrator/businessConnect/dashboard/");
         } else if (userType === "Médico") {
-            //router.push("/login");
+            //router.push("/administrator/medassist");
         } else if (userType === "Atendente") {
-            router.push("/engagemed/integration/");
+            router.push("/administrator/engagemed/agenda/");
         }
     };
 

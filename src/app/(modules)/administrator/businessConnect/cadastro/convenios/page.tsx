@@ -116,7 +116,7 @@ export default function ConveriosList() {
                                 <p className="font-semibold">{convenio.name}</p>
                                 <p className="text-sm text-gray-500">{convenio.content}</p>
                             </div>
-                            <Button variant="outline" onClick={() => router.push(`/businessConnect/cadastro/convenios/edit`)}>Detalhes</Button>
+                            <Button variant="outline" onClick={() => router.push(`/administrator/businessConnect/cadastro/convenios/edit`)}>Detalhes</Button>
                         </CardContent>
                     </Card>
                 ))}
