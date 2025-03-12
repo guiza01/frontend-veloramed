@@ -34,22 +34,7 @@ const PaginationItem = ({ isActive, children, ...props }: PaginationItemProps) =
 export default function HistoricoPaciente() {
     const [search, setSearch] = useState('');
     const router = useRouter();
-    const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
-    const [isModalEditOpen, setIsModalEditOpen] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-    const [step, setStep] = useState(1);
-    const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
-    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.files && event.target.files[0]) {
-            setSelectedFile(event.target.files[0]);
-        }
-    };
-
-    const handleCloseEditModal = () => {
-        setIsModalEditOpen(false);
-        setStep(1);
-    };
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -121,7 +106,6 @@ export default function HistoricoPaciente() {
                                         <button
                                             type="button"
                                             className="text-[#1E1E1E] hover:text-blue-700"
-                                            onClick={() => setIsModalEditOpen(true)}
                                         >
                                             <Edit size={20} />
                                         </button>
