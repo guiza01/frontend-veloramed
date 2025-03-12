@@ -10,29 +10,13 @@ import Link from "next/link";
 function LoginContent() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const [userType, setUserType] = useState<string | null>(null);
-
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const type = searchParams.get("userType");
-    setUserType(type);
-  }, [searchParams]);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
 
   const handleClick = () => {
-    console.log("User: ", userType);
-
-    const routes: Record<string, string> = {
-      Administrador: "/main",
-      Médico: "/medassist/dashboard/",
-      Atendente: "/engagemed/integration/",
-    };
-
-    router.push(routes[userType || ""] || "/");
+    router.push("/medassist/dashboard");
   };
 
   return (
