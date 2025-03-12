@@ -72,7 +72,7 @@ export default function ConverioEdit() {
     return (
         <div className="mx-auto min-h-screen p-4 bg-[#FAFAFA]">
 
-            <Button variant={'ghost'} onClick={() => router.push(`/businessConnect/cadastro/convenios`)} className="text-[20px]">
+            <Button variant={'ghost'} onClick={() => router.push(`/administrator/businessConnect/cadastro/convenios`)} className="text-[20px]">
                 <ArrowLeft size={18} className="mr-2" />
                 Detalhes do Convênio
             </Button>

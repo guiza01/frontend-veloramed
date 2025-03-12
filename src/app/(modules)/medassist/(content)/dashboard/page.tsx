@@ -14,10 +14,12 @@ import {
     Legend,
     ArcElement,
 } from "chart.js";
-import { Bar, Doughnut } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import { MdMoneyOff } from "react-icons/md";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 ChartJS.register(
     CategoryScale,
@@ -56,33 +58,12 @@ const barData = {
     ],
 };
 
-const atendimentoConvenio = {
-    labels: ["HAPVIDA", "SULAMERICA", "PARTICULAR", "HAPVIDA", "SULAMERICA", "PARTICULAR"],
-    datasets: [
-        {
-            data: [20, 10, 10, 10, 25, 25],
-            backgroundColor: ["#f87171", "#fb923c", "#60a5fa", "#34d399", "#ffb74d", "#a5b4fc"],
-            borderWidth: 0.5,
-        },
-    ],
-};
-
-const atendimentoProcedimento = {
-    labels: ["Bioimpedância", "Acupuntura", "Bioimpedância", "Acupuntura", "Bioimpedância", "Acupuntura", "Bioimpedância", "Acupuntura"],
-    datasets: [
-        {
-            data: [12.5, 12.5, 12.5, 12.5, 12.5, 12.5, 12.5, 12.5],
-            backgroundColor: ["#34d399", "#f87171", "#f87171", "#fb923c", "#60a5fa", "#34d399", "#ffb74d", "#a5b4fc"],
-            borderWidth: 0.5,
-        },
-    ],
-};
-
 export default function Integration() {
     const [selectedCategory, setSelectedCategory] = useState<'diario' | 'semanal' | 'mensal'>('diario');
-
+    const router = useRouter();
+    
     return (
-        <main className="w-full h-screen px-8 flex flex-col gap-8">
+        <main className="w-full px-8 flex flex-col gap-8">
             <nav className="w-full flex justify-between items-start">
                 <div className="flex items-center">
                     <h1 className="font-bold text-2xl mt-5">Dashboard</h1>
@@ -168,6 +149,61 @@ export default function Integration() {
                 <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-2 col-span-2 h-full">
                     <h3 className="text-md font-medium text-gray-500">Faturamento geral</h3>
                     <Bar
+                        className=""
+                        data={barData}
+                        options={{
+                            responsive: true,
+                            plugins: { legend: { position: "top", align: "end" } },
+                        }}
+                    />
+                </div>
+                <div className="p-2 col-span-1 h-full">
+                    <div className="">
+                        <div className="flex items-center justify-between">
+                            <h1>Agendamentos do Dia</h1>
+                            <Button variant={'outline'}>Ver agenda</Button>
+                        </div>
+                        <div className="flex items-center justify-between mt-4 bg-white rounded border-l-[3px] border-blue-500">
+                            <div className="px-2">
+                                <h1>Nome do paciente</h1>
+                                <h1 className="text-gray-500">09:30 às 10:30</h1>
+                            </div>
+                            <Button variant={'ghost'}>
+                                <ArrowRight />
+                            </Button>
+                        </div>
+                        <div className="flex items-center justify-between mt-4 bg-white rounded border-l-[3px] border-red-500">
+                            <div className="px-2">
+                                <h1>Nome do paciente</h1>
+                                <h1 className="text-gray-500">09:30 às 10:30</h1>
+                            </div>
+                            <Button variant={'ghost'}>
+                                <ArrowRight />
+                            </Button>
+                        </div>
+                        <div className="flex items-center justify-between mt-4 bg-white rounded border-l-[3px] border-green-500">
+                            <div className="px-2">
+                                <h1>Nome do paciente</h1>
+                                <h1 className="text-gray-500">09:30 às 10:30</h1>
+                            </div>
+                            <Button variant={'ghost'}>
+                                <ArrowRight />
+                            </Button>
+                        </div>
+                        <div className="flex items-center justify-between mt-4 bg-white rounded border-l-[3px] border-yellow-500">
+                            <div className="px-2">
+                                <h1>Nome do paciente</h1>
+                                <h1 className="text-gray-500">09:30 às 10:30</h1>
+                            </div>
+                            <Button variant={'ghost'}>
+                                <ArrowRight />
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+                <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-2 col-span-2 h-full">
+                    <h3 className="text-md font-medium text-gray-500">Faturamento geral</h3>
+                    <Bar
                         className="h-[400px]"
                         data={barData}
                         options={{
@@ -176,28 +212,50 @@ export default function Integration() {
                         }}
                     />
                 </div>
-
-                <div className="grid grid-rows-2 gap-4 col-span-1 h-200">
-                    <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-2">
-                        <h3 className="text-md font-medium text-gray-500">Atendimentos x Convênios</h3>
-                        <Doughnut
-                            data={atendimentoConvenio}
-                            options={{
-                                responsive: true,
-                                plugins: { legend: { position: 'right' } }
-                            }}
-                        />
-                    </div>
-
-                    <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-2">
-                        <h3 className="text-md font-medium text-gray-500">Atendimentos x Procedimentos</h3>
-                        <Doughnut
-                            data={atendimentoProcedimento}
-                            options={{
-                                responsive: true,
-                                plugins: { legend: { position: 'right' } }
-                            }}
-                        />
+                <div className="p-2 col-span-1 h-full">
+                    <div className="">
+                        <div>
+                            <div className="flex items-center justify-between">
+                                <h1>Histórico de Atendimentos</h1>
+                                <Button variant={'outline'}>Ver histórico</Button>
+                            </div>
+                            <div className="flex items-center justify-between mt-4 bg-white rounded">
+                                <div className="px-2">
+                                    <h1>Nome do paciente</h1>
+                                    <h1 className="text-gray-500">Convênio</h1>
+                                </div>
+                                <Button variant={'ghost'} onClick={() => router.push("/medassist/dashboard/historico/")}>
+                                    <ArrowRight />
+                                </Button>
+                            </div>
+                            <div className="flex items-center justify-between mt-4 bg-white rounded">
+                                <div className="px-2">
+                                    <h1>Nome do paciente</h1>
+                                    <h1 className="text-gray-500">Convênio</h1>
+                                </div>
+                                <Button variant={'ghost'} onClick={() => router.push("/medassist/dashboard/historico/")}>
+                                    <ArrowRight />
+                                </Button>
+                            </div>
+                            <div className="flex items-center justify-between mt-4 bg-white rounded">
+                                <div className="px-2">
+                                    <h1>Nome do paciente</h1>
+                                    <h1 className="text-gray-500">Convênio</h1>
+                                </div>
+                                <Button variant={'ghost'} onClick={() => router.push("/medassist/dashboard/historico/")}>
+                                    <ArrowRight />
+                                </Button>
+                            </div>
+                            <div className="flex items-center justify-between mt-4 bg-white rounded">
+                                <div className="px-2">
+                                    <h1>Nome do paciente</h1>
+                                    <h1 className="text-gray-500">Convênio</h1>
+                                </div>
+                                <Button variant={'ghost'} onClick={() => router.push("/medassist/dashboard/historico/")}>
+                                    <ArrowRight />
+                                </Button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

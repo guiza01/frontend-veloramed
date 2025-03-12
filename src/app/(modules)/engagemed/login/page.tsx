@@ -16,7 +16,7 @@ function LoginContent() {
   };
 
   const handleClick = () => {
-    router.push("/engagemed/agenda");
+    router.push("/engagemed/dashboard");
   };
 
   return (
@@ -82,7 +82,7 @@ function LoginContent() {
         </div>
       </div>
       <div className="w-1/2 h-screen bg-cover bg-no-repeat">
-        <img src={"/Login2.png"} alt="Login2" className="w-full h-full" />
+        <img src={"/Login1.png"} alt="Login2" className="w-full h-full" />
       </div>
     </main>
   );

@@ -84,7 +84,7 @@ export default function MedicsEdit() {
 
     return (
         <div className="mx-auto min-h-screen p-2 bg-[#FAFAFA]">
-            <Button variant={'ghost'} onClick={() => router.push(`/businessConnect/gestao/medicos`)} className="text-[20px]">
+            <Button variant={'ghost'} onClick={() => router.push(`/administrator/businessConnect/gestao/medicos`)} className="text-[20px]">
                 <ArrowLeft size={18} className="mr-2" />
                 Detalhes do Profissional
             </Button>

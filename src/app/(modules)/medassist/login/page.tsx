@@ -82,7 +82,7 @@ function LoginContent() {
         </div>
       </div>
       <div className="w-1/2 h-screen bg-cover bg-no-repeat">
-        <img src={"/Login2.png"} alt="Login2" className="w-full h-full" />
+        <img src={"/Login3.png"} alt="Login2" className="w-full h-full" />
       </div>
     </main>
   );
