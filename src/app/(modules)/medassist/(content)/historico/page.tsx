@@ -5,8 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogOverlay, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { PaginationPrevious, Pagination, PaginationContent, PaginationEllipsis, PaginationNext } from "@/components/ui/pagination";
-import { ArrowLeft, ChevronLeft, ChevronRight, Filter, Search } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { ChevronLeft, ChevronRight, Filter, Search } from "lucide-react";
 import React from "react";
 import { useState } from "react";
 
@@ -33,7 +32,6 @@ const PaginationItem = ({ isActive, children, ...props }: PaginationItemProps) =
 
 export default function HistoricoPaciente() {
     const [search, setSearch] = useState('');
-    const router = useRouter();
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
