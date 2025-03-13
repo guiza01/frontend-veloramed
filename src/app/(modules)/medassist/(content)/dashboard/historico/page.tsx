@@ -1,23 +1,25 @@
 "use client";
 
-import { AlertDialogHeader, AlertDialogFooter } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogOverlay, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { PaginationPrevious, Pagination, PaginationContent, PaginationEllipsis, PaginationNext } from "@/components/ui/pagination";
-import { AlertDialog, AlertDialogTrigger, AlertDialogContent, AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction } from "@radix-ui/react-alert-dialog";
-import { ArrowLeft, ChevronLeft, ChevronRight, Edit, Eye, EyeOff, Filter, Search, Trash } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, Filter, Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useState } from "react";
-import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 
-const attendants = Array(3).fill({
-    name: 'Ana Julia Moraes ',
-    email: 'anajuliamoraes28@gmail.com',
-    password: '12345678',
-    recepcao: 'Cardiologia',
-    avatar: '/atendente.png',
+const doctors = Array(5).fill({
+    index: 1,
+    name: 'Maria Elisângela dos Santos',
+    specialty: 'Endocrinologia',
+    convenio: 'Unimed',
+    tipeService: 'Consulta',
+    date: 'Ultima consulta: 12/12/2023',
+    dateTime: '12/12/2023 às 12:12',
+    plan: 'Convênio/Particular: Unimed',
+    value: 'R$350,00',
 });
 
 type PaginationItemProps = {
@@ -34,13 +36,7 @@ const PaginationItem = ({ isActive, children, ...props }: PaginationItemProps) =
 export default function HistoricoPaciente() {
     const [search, setSearch] = useState('');
     const router = useRouter();
-    const [showPassword, setShowPassword] = useState(false);
-
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleDetails = () => {
-        setIsOpen(!isOpen);
-    };
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
         <div className="mx-auto p-4 bg-[#FAFAFA]">
@@ -67,74 +63,17 @@ export default function HistoricoPaciente() {
             </div>
 
             <div className="bg-[#FAFAFA] rounded-lg">
-                {attendants.map((attendat, index) => {
-                    return (
-                        <Card key={index} className="border-b mb-4">
-                            <CardContent className="flex items-center justify-between p-4 gap-4">
-                                <div className="flex items-center gap-4">
-                                    <img
-                                        src={attendat.avatar}
-                                        alt="Avatar"
-                                        className="w-12 h-12 rounded-full"
-                                    />
-                                    <p className="font-semibold">{attendat.name}</p>
-                                </div>
-                                <p className="text-sm text-gray-500">{attendat.email}</p>
-                                <p className="text-sm text-gray-500">{attendat.recepcao}</p>
-                                <button onClick={toggleDetails} className="text-blue-500">
-                                    {isOpen ? <FaChevronUp className="text-gray-500" /> : <FaChevronDown className="text-gray-500" />}
-                                </button>
-                            </CardContent>
-                            {isOpen && (
-                                <div className="flex items-center justify-between p-4">
-                                    <div className="flex items-center gap-4 text-gray-600">
-                                        <label className="text-[14px] font-semibold">
-                                            Senha
-                                        </label>
-                                        <div className="flex items-center">
-                                            <span className="mr-2 text-[14px] text-gray-500">{showPassword ? attendat.password : '●●●●●●●●'}</span>
-                                            <button
-                                                type="button"
-                                                className="text-gray-500"
-                                                onClick={() => setShowPassword(!showPassword)}
-                                            >
-                                                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div className="flex space-x-4">
-                                        <button
-                                            type="button"
-                                            className="text-[#1E1E1E] hover:text-blue-700"
-                                        >
-                                            <Edit size={20} />
-                                        </button>
-
-                                        <AlertDialog>
-                                            <AlertDialogTrigger asChild>
-                                                <Button variant="ghost">
-                                                    <Trash />
-                                                </Button>
-                                            </AlertDialogTrigger>
-                                            <AlertDialogContent>
-                                                <AlertDialogHeader>
-                                                    <AlertDialogTitle>Tem certeza?</AlertDialogTitle>
-                                                    <AlertDialogDescription>
-                                                        Esta ação não pode ser desfeita. Isso excluirá permanentemente o item.
-                                                    </AlertDialogDescription>
-                                                </AlertDialogHeader>
-                                                <AlertDialogFooter>
-                                                    <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                                                    <AlertDialogAction>Excluir</AlertDialogAction>
-                                                </AlertDialogFooter>
-                                            </AlertDialogContent>
-                                        </AlertDialog>
-                                    </div>
-                                </div>
-                            )}
-                        </Card>
-                    );
-                })}
+                {doctors.map((doctor, index) => (
+                    <Card key={index} className="border-b mb-4">
+                        <CardContent className="flex items-center p-4 gap-4">
+                            <div className="flex-1">
+                                <p className="font-semibold">{doctor.name}</p>
+                                <p className="text-sm mt-2 text-gray-500">{doctor.date} | {doctor.plan} | {doctor.value}</p>
+                            </div>
+                            <Button variant="outline" onClick={() => setIsModalOpen(true)}>Detalhes</Button>
+                        </CardContent>
+                    </Card>
+                ))}
             </div>
 
             <div className="bg-[#FFFFFF] shadow flex justify-between items-center p-4 mt-4">
@@ -168,6 +107,41 @@ export default function HistoricoPaciente() {
                     <ChevronRight size={18} className="ml-2" />
                 </PaginationNext>
             </div>
+
+            <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+                <DialogOverlay className="fixed inset-0 bg-black/50" />
+                {doctors.map((doctor, index) => (
+                    <DialogContent key={index} className="fixed bg-white p-6 rounded-lg shadow-lg top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[90vh] overflow-y-auto">
+                        <DialogTitle className="text-lg font-semibold mb-4">Detalhes do Agendamento</DialogTitle>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div>
+                                <h1 className="text-[#4D5056] text-[16px]">Nome</h1>
+                                <h1 className="mt-2 text-[20px]">{doctor.name}</h1>
+                            </div><div>
+                                <h1 className="text-[#4D5056]">Especialidade</h1>
+                                <h1 className="mt-2 text-[20px]">{doctor.specialty}</h1>
+                            </div><div>
+                                <h1 className="text-[#4D5056]">Tipo de Atendimento</h1>
+                                <h1 className="mt-2 text-[20px]">{doctor.convenio}</h1>
+                            </div><div>
+                                <h1 className="text-[#4D5056]">Tipo de Serviço</h1>
+                                <h1 className="mt-2 text-[20px]">{doctor.tipeService}</h1>
+                            </div><div>
+                                <h1 className="text-[#4D5056]">Valor</h1>
+                                <h1 className="mt-2 text-[20px]">{doctor.value}</h1>
+                            </div><div>
+                                <h1 className="text-[#4D5056]">Data e Hora</h1>
+                                <h1 className="mt-2 text-[20px]">{doctor.dateTime}</h1>
+                            </div>
+                        </div>
+                        <div className="flex items-center mt-4 justify-end">
+                            <Button onClick={() => setIsModalOpen(false)}>
+                                Fechar
+                            </Button>
+                        </div>
+                    </DialogContent>
+                ))}
+            </Dialog>
 
         </div>
     );
