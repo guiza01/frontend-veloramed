@@ -10,16 +10,14 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { useState } from "react";
 
-const doctors = Array(5).fill({
-    index: 1,
-    name: 'Maria Elisângela dos Santos',
-    specialty: 'Endocrinologia',
+const patients = Array(5).fill({
+    name: 'Nome do paciente',
+    email: 'exemplo@email.com',
+    cpf: '000.000.000-00',
     convenio: 'Unimed',
-    tipeService: 'Consulta',
-    date: 'Ultima consulta: 12/12/2023',
-    dateTime: '12/12/2023 às 12:12',
-    plan: 'Convênio/Particular: Unimed',
-    value: 'R$350,00',
+    date: '02/08/2000',
+    number: '(00) 00000-0000',
+    lastConsult: '19/11/2024',
 });
 
 type PaginationItemProps = {
@@ -41,10 +39,7 @@ export default function HistoricoPaciente() {
     return (
         <div className="mx-auto p-4 bg-[#FAFAFA]">
             <div className="flex justify-between py-4">
-                <Button variant={'ghost'} onClick={() => router.push("/medassist/dashboard")}>
-                    <ArrowLeft size={18} />
-                    <h1 className="text-[20px]">Histórico de atendimentos</h1>
-                </Button>
+                <h1 className="text-[20px] font-semibold">Pacientes</h1>
                 <div className="flex items-center gap-4">
                     <div className="relative w-full">
                         <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
@@ -63,12 +58,12 @@ export default function HistoricoPaciente() {
             </div>
 
             <div className="bg-[#FAFAFA] rounded-lg">
-                {doctors.map((doctor, index) => (
+                {patients.map((patient, index) => (
                     <Card key={index} className="border-b mb-4">
                         <CardContent className="flex items-center p-4 gap-4">
                             <div className="flex-1">
-                                <p className="font-semibold">{doctor.name}</p>
-                                <p className="text-sm mt-2 text-gray-500">{doctor.date} | {doctor.plan} | {doctor.value}</p>
+                                <p className="font-semibold">{patient.name}</p>
+                                <p className="text-sm mt-2 text-gray-500">Ultima consulta: {patient.lastConsult} | {patient.convenio}</p>
                             </div>
                             <Button variant="outline" onClick={() => setIsModalOpen(true)}>Detalhes</Button>
                         </CardContent>
@@ -110,34 +105,48 @@ export default function HistoricoPaciente() {
 
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
                 <DialogOverlay className="fixed inset-0 bg-black/50" />
-                {doctors.map((doctor, index) => (
-                    <DialogContent key={index} className="fixed bg-white p-6 rounded-lg shadow-lg top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[90vh] overflow-y-auto">
-                        <DialogTitle className="text-lg font-semibold mb-4">Detalhes do Agendamento</DialogTitle>
-                        <div className="grid grid-cols-2 gap-4">
+                {patients.map((patient, index) => (
+                    <DialogContent
+                        key={index}
+                        className="fixed bg-white p-6 rounded-lg shadow-lg top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[90vh] overflow-y-auto w-[700px] max-w-3xl"
+                    >
+                        <DialogTitle className="text-lg font-semibold mb-4">Detalhes do agendamento</DialogTitle>
+                        <div className=" gap-4">
                             <div>
                                 <h1 className="text-[#4D5056] text-[16px]">Nome</h1>
-                                <h1 className="mt-2 text-[20px]">{doctor.name}</h1>
-                            </div><div>
-                                <h1 className="text-[#4D5056]">Especialidade</h1>
-                                <h1 className="mt-2 text-[20px]">{doctor.specialty}</h1>
-                            </div><div>
-                                <h1 className="text-[#4D5056]">Tipo de Atendimento</h1>
-                                <h1 className="mt-2 text-[20px]">{doctor.convenio}</h1>
-                            </div><div>
-                                <h1 className="text-[#4D5056]">Tipo de Serviço</h1>
-                                <h1 className="mt-2 text-[20px]">{doctor.tipeService}</h1>
-                            </div><div>
-                                <h1 className="text-[#4D5056]">Valor</h1>
-                                <h1 className="mt-2 text-[20px]">{doctor.value}</h1>
-                            </div><div>
-                                <h1 className="text-[#4D5056]">Data e Hora</h1>
-                                <h1 className="mt-2 text-[20px]">{doctor.dateTime}</h1>
+                                <h1 className="mt-2 text-[20px]">{patient.name}</h1>
+                            </div>
+                            <div>
+                                <h1 className="text-[#4D5056]">E-mail</h1>
+                                <h1 className="mt-2 text-[20px]">{patient.email}</h1>
+                            </div>
+                            <div className="flex items-center mt-4 grid grid-cols-3">
+                                <div>
+                                    <h1 className="text-[#4D5056]">CPF</h1>
+                                    <h1 className="mt-2 text-[20px]">{patient.cpf}</h1>
+                                </div>
+                                <div>
+                                    <h1 className="text-[#4D5056]">Data de nascimento</h1>
+                                    <h1 className="mt-2 text-[20px]">{patient.date}</h1>
+                                </div>
+                                <div>
+                                    <h1 className="text-[#4D5056]">Telefone</h1>
+                                    <h1 className="mt-2 text-[20px]">{patient.number}</h1>
+                                </div>
+                            </div>
+                            <div className="flex items-center mt-4  grid grid-cols-3">
+                                <div className="">
+                                    <h1 className="text-[#4D5056]">Convênio</h1>
+                                    <h1 className="mt-2 text-[20px]">{patient.convenio}</h1>
+                                </div>
+                                <div className="">
+                                    <h1 className="text-[#4D5056]">Última consulta</h1>
+                                    <h1 className="mt-2 text-[20px]">{patient.lastConsult}</h1>
+                                </div>
                             </div>
                         </div>
                         <div className="flex items-center mt-4 justify-end">
-                            <Button onClick={() => setIsModalOpen(false)}>
-                                Fechar
-                            </Button>
+                            <Button>Ver prontuário</Button>
                         </div>
                     </DialogContent>
                 ))}
