@@ -5,13 +5,12 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { eachDayOfInterval, startOfWeek, startOfMonth, endOfWeek, endOfMonth } from "date-fns";
 import { Filter, Search } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { CgCloseR } from "react-icons/cg";
 import { FaArrowTrendDown, FaArrowTrendUp, FaRegSquareCheck } from "react-icons/fa6";
 import { MdMoneyOff } from "react-icons/md";
 import { format } from "date-fns";
-import { ptBR } from "date-fns/locale";
+import { Dialog, DialogContent, DialogOverlay, DialogTitle } from "@/components/ui/dialog";
 
 
 const months = [
@@ -21,11 +20,10 @@ const months = [
 
 export default function Dashboard() {
     const [selectedCategory, setSelectedCategory] = useState<'diario' | 'semanal' | 'mensal'>('diario');
-    const router = useRouter();
     const [search, setSearch] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [selectedDate] = useState(new Date());
     const [events, setEvents] = useState<Record<string, string[]>>({});
 
     const days = eachDayOfInterval({
@@ -190,6 +188,20 @@ export default function Dashboard() {
                 </div>
             </div>
 
+            <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+                <DialogOverlay className="fixed inset-0 bg-black/50" />
+                    <DialogContent className="fixed bg-white p-6 rounded-lg shadow-lg top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[90vh] overflow-y-auto">
+                        <DialogTitle className="text-lg font-semibold mb-4">Detalhes do Agendamento</DialogTitle>
+                        <div className="grid grid-cols-2 gap-4">
+                            
+                        </div>
+                        <div className="flex items-center mt-4 justify-end">
+                            <Button onClick={() => setIsModalOpen(false)}>
+                                Fechar
+                            </Button>
+                        </div>
+                    </DialogContent>
+            </Dialog>
         </main>
     );
 }
