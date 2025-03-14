@@ -16,7 +16,7 @@ function LoginContent() {
   };
 
   const handleClick = () => {
-    router.push("/engagemed/dashboard");
+    router.push("/engagemed/agenda");
   };
 
   return (
