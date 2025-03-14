@@ -1,52 +1,57 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { IPatients } from "@/types/IPatients";
 import { Plus } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { MdOutlineFilterAlt, MdSearch } from "react-icons/md";
 
 export default function PatientsPage() {
-    const mockPatients: IPatients[] = [
-        {
-            name:"Maria Elisângela dos Santos",
-            email:"email@exemplo.com",
-            agreement: "Unimed",
-            phone: "(71) 9 8888-8888"
-        },
-        {
-            name:"Maria Elisângela dos Santos",
-            email:"email@exemplo.com",
-            agreement: "Unimed",
-            phone: "(71) 9 8888-8888"
-        },
-        {
-            name:"Maria Elisângela dos Santos",
-            email:"email@exemplo.com",
-            agreement: "Unimed",
-            phone: "(71) 9 8888-8888"
-        },
-        {
-            name:"Maria Elisângela dos Santos",
-            email:"email@exemplo.com",
-            agreement: "Unimed",
-            phone: "(71) 9 8888-8888"
-        },
-        {
-            name:"Maria Elisângela dos Santos",
-            email:"email@exemplo.com",
-            agreement: "Unimed",
-            phone: "(71) 9 8888-8888"
-        },
-        {
-            name:"Maria Elisângela dos Santos",
-            email:"email@exemplo.com",
-            agreement: "Unimed",
-            phone: "(71) 9 8888-8888"
-        }
-        
-    ] 
+  const router = useRouter();
+
+  const mockPatients: IPatients[] = [
+    {
+      name: "Maria Elisângela dos Santos",
+      email: "email@exemplo.com",
+      agreement: "Unimed",
+      phone: "(71) 9 8888-8888"
+    },
+    {
+      name: "Maria Elisângela dos Santos",
+      email: "email@exemplo.com",
+      agreement: "Unimed",
+      phone: "(71) 9 8888-8888"
+    },
+    {
+      name: "Maria Elisângela dos Santos",
+      email: "email@exemplo.com",
+      agreement: "Unimed",
+      phone: "(71) 9 8888-8888"
+    },
+    {
+      name: "Maria Elisângela dos Santos",
+      email: "email@exemplo.com",
+      agreement: "Unimed",
+      phone: "(71) 9 8888-8888"
+    },
+    {
+      name: "Maria Elisângela dos Santos",
+      email: "email@exemplo.com",
+      agreement: "Unimed",
+      phone: "(71) 9 8888-8888"
+    },
+    {
+      name: "Maria Elisângela dos Santos",
+      email: "email@exemplo.com",
+      agreement: "Unimed",
+      phone: "(71) 9 8888-8888"
+    }
+
+  ]
 
   return (
-    <main className="w-full min-h-screen 2xl:max-w-[1300px] mx-auto flex flex-col p-4 px-2">
+    <main className="w-full min-h-screen 2xl:max-w-[1300px] mx-auto flex flex-col p-4 px-6">
       <div className="flex justify-between flex-col md:flex-row">
         <h1 className="font-semibold text-xl mb-3">Pacientes</h1>
 
@@ -67,6 +72,7 @@ export default function PatientsPage() {
           </Button>
           <Button
             className="flex items-center gap-2 justify-center border-[#1E1E1E]"
+            onClick={() => router.push("/engagemed/patients/create")}
           >
             <Plus size={18} />
             Novo paciente
@@ -74,32 +80,33 @@ export default function PatientsPage() {
         </div>
       </div>
       {mockPatients.map((patient, index) => (
-       
+
         <div key={index} className="mt-4 p-4 bg-white rounded-xl flex justify-between items-center">
-            <div className="flex flex-col" key={index}>
-                <span>{patient.name}</span>
-                <div className="flex flex-col items-start md:items-center md:justify-start md:flex-row md:divide-x w-full text-xs text-[#666870]">
-                    <span className="text-center px-2">{patient.agreement}</span>
-                    <span className="text-center px-2">{patient.phone}</span>
-                    <span className="text-center px-2">{patient.email}</span>
-                </div>
+          <div className="flex flex-col" key={index}>
+            <span>{patient.name}</span>
+            <div className="flex flex-col items-start md:items-center md:justify-start md:flex-row md:divide-x w-full text-xs text-[#666870]">
+              <span className="text-center px-2">{patient.agreement}</span>
+              <span className="text-center px-2">{patient.phone}</span>
+              <span className="text-center px-2">{patient.email}</span>
             </div>
-            <Button
+          </div>
+          <Button
             variant={"outline"}
             className="flex items-center gap-2 justify-center bg-transparent border-[#1E1E1E]"
+            onClick={() => router.push("/engagemed/patients/details")}
           >
             Detalhes
           </Button>
         </div>
       ))}
 
-<div className="overflow-x-auto">
-  <Pagination className="w-full mt-4">
-        <PaginationContent className="flex w-full justify-between bg-white rounded-md py-2">
-          <PaginationItem>
-            <PaginationPrevious href="#" />
-          </PaginationItem>
-          <div className="flex">
+      <div className="overflow-x-auto">
+        <Pagination className="w-full mt-4">
+          <PaginationContent className="flex w-full justify-between bg-white rounded-md py-2">
+            <PaginationItem>
+              <PaginationPrevious href="#" />
+            </PaginationItem>
+            <div className="flex">
               <PaginationItem>
                 <PaginationLink href="#" isActive className="bg-[#2955D9] text-xs rounded-[8px]"><span className="text-white">1</span></PaginationLink>
               </PaginationItem>
@@ -129,14 +136,14 @@ export default function PatientsPage() {
                   10
                 </PaginationLink>
               </PaginationItem>
-          </div>
-          <PaginationItem>
-            <PaginationNext href="#"/>
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
-</div>
-      
+            </div>
+            <PaginationItem>
+              <PaginationNext href="#" />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </div>
+
     </main>
   );
 }
