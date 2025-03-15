@@ -35,7 +35,7 @@ export default function HistoricoPaciente() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <div className="mx-auto p-4 bg-[#FAFAFA]">
+        <div className="mx-auto p-4 bg-[#FAFAFA] flex flex-col min-h-screen">
             <div className="flex justify-between py-4">
                 <h1 className="text-[20px] font-semibold">Pacientes</h1>
                 <div className="flex items-center gap-4">
@@ -55,7 +55,7 @@ export default function HistoricoPaciente() {
                 </div>
             </div>
 
-            <div className="bg-[#FAFAFA] rounded-lg">
+            <div className="bg-[#FAFAFA] rounded-lg flex-grow">
                 {patients.map((patient, index) => (
                     <Card key={index} className="border-b mb-4">
                         <CardContent className="flex items-center p-4 gap-4">
@@ -69,7 +69,7 @@ export default function HistoricoPaciente() {
                 ))}
             </div>
 
-            <div className="bg-[#FFFFFF] shadow flex justify-between items-center p-4 mt-4">
+            <div className="bg-[#FFFFFF] shadow flex justify-between items-center p-4 mt-auto">
                 <PaginationPrevious className="text-gray-700 hover:bg-gray-200 p-2 rounded">
                     <ChevronLeft size={18} className="mr-2" />
                     Anterior

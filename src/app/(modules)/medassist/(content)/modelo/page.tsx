@@ -42,7 +42,7 @@ export default function HistoricoPaciente() {
     const [selectedOption, setSelectedOption] = useState("option-one");
 
     return (
-        <div className="mx-auto p-4 bg-[#FAFAFA]">
+        <div className="mx-auto p-4 bg-[#FAFAFA] flex flex-col min-h-screen">
             <div className="flex justify-between py-4">
                 <div className="gap-1">
                     <Button
@@ -91,7 +91,7 @@ export default function HistoricoPaciente() {
                 </div>
             </div>
 
-            <div className="bg-[#FAFAFA] rounded-lg">
+            <div className="bg-[#FAFAFA] rounded-lg flex-grow">
                 {patients.map((patient, index) => (
                     <Card key={index} className="border-b mb-4">
                         <CardContent className="flex items-center p-4 gap-4">
@@ -125,7 +125,7 @@ export default function HistoricoPaciente() {
                 ))}
             </div>
 
-            <div className="bg-[#FFFFFF] shadow flex justify-between items-center p-4 mt-4">
+            <div className="bg-[#FFFFFF] shadow flex justify-between items-center p-4 mt-auto">
                 <PaginationPrevious className="text-gray-700 hover:bg-gray-200 p-2 rounded">
                     <ChevronLeft size={18} className="mr-2" />
                     Anterior
@@ -199,21 +199,21 @@ export default function HistoricoPaciente() {
 
             <Dialog open={isModalEditOpen} onOpenChange={setIsModalEditOpen}>
                 <DialogOverlay className="fixed inset-0 bg-black/50" />
-                    <DialogContent
-                        className="fixed bg-white p-6 rounded-lg shadow-lg top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[90vh] overflow-y-auto w-[700px] max-w-3xl"
-                    >
-                        <DialogTitle className="text-lg font-semibold mb-4">Editar modelo</DialogTitle>
-                        <div className="gap-4">
-                            <div className="">
-                                <h1 className="text-[14px]">Descrição do modelo <span className="text-[red]">*</span></h1>
-                                <Textarea placeholder="Escreva aqui a descrição do serviço." />
-                            </div>
+                <DialogContent
+                    className="fixed bg-white p-6 rounded-lg shadow-lg top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[90vh] overflow-y-auto w-[700px] max-w-3xl"
+                >
+                    <DialogTitle className="text-lg font-semibold mb-4">Editar modelo</DialogTitle>
+                    <div className="gap-4">
+                        <div className="">
+                            <h1 className="text-[14px]">Descrição do modelo <span className="text-[red]">*</span></h1>
+                            <Textarea placeholder="Escreva aqui a descrição do serviço." />
                         </div>
-                        <div className="flex items-center mt-4 justify-end">
-                            <Button variant={'ghost'} onClick={() => setIsModalEditOpen(false)}>Cancelar</Button>
-                            <Button>Salvar alterações</Button>
-                        </div>
-                    </DialogContent>
+                    </div>
+                    <div className="flex items-center mt-4 justify-end">
+                        <Button variant={'ghost'} onClick={() => setIsModalEditOpen(false)}>Cancelar</Button>
+                        <Button>Salvar alterações</Button>
+                    </div>
+                </DialogContent>
             </Dialog>
 
         </div>
