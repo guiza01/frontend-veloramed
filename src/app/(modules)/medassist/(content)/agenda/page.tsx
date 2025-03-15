@@ -48,33 +48,33 @@ export default function Dashboard() {
             <section className="grid grid-cols-3 gap-4 mt-10">
                 {[
                     {
-                        icon: <FaRegSquareCheck className="text-blue-500 text-2xl" />,
+                        icon: <FaRegSquareCheck className="text-[#27B9F2] text-2xl" />,
                         label: "Consultas realizadas",
                         value: "51",
                         trend: "+20%",
                         trendIcon: <FaArrowTrendUp />,
-                        trendColor: "text-green-500",
+                        trendColor: "text-[#22B257]",
                     },
                     {
-                        icon: <CgCloseR className="text-blue-500 text-2xl" />,
+                        icon: <CgCloseR className="text-[#27B9F2] text-2xl" />,
                         label: "Consultas canceladas",
                         value: "51",
                         trend: "+20%",
                         trendIcon: <FaArrowTrendDown />,
-                        trendColor: "text-red-500",
+                        trendColor: "text-[#F23E2E]",
                     },
                     {
-                        icon: <MdMoneyOff className="text-blue-500 text-2xl" />,
+                        icon: <MdMoneyOff className="text-[#27B9F2] text-2xl" />,
                         label: "Valor perdido",
                         value: "R$2.000",
                         trend: "+20%",
                         trendIcon: <FaArrowTrendDown />,
-                        trendColor: "text-red-500",
+                        trendColor: "text-[#F23E2E]",
                     },
                 ].map((card, index) => (
                     <div
                         key={index}
-                        className="bg-white border border-gray-200 rounded-lg shadow-lg p-4"
+                        className="bg-white border border-gray-200 rounded-lg p-4"
                     >
                         <h3 className="text-sm font-medium text-gray-500 flex items-center gap-2">
                             {card.icon}
@@ -116,17 +116,17 @@ export default function Dashboard() {
                 <div className="gap-1">
                     <Button
                         className={`mr-2 ${selectedCategory === 'diária'
-                            ? 'bg-[#DEEAFF] text-[#2955D9]'
-                            : 'bg-white text-black border border-gray-300 hover:bg-[#DEEAFF] hover:text-[#2955D9]'
+                            ? 'bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]'
+                            : 'bg-white text-black border border-gray-300 hover:bg-[#ECF2FF] hover:text-[#2955D9]'
                             }`}
                         onClick={() => setSelectedCategory('diária')}
                     >
-                        Diaria
+                        Diária
                     </Button>
                     <Button
                         className={`mr-2 ${selectedCategory === 'semanal'
-                            ? 'bg-[#DEEAFF] text-[#2955D9]'
-                            : 'bg-white text-black border border-gray-300 hover:bg-[#DEEAFF] hover:text-[#2955D9]'
+                            ? 'bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]'
+                            : 'bg-white text-black border border-gray-300 hover:bg-[#ECF2FF] hover:text-[#2955D9]'
                             }`}
                         onClick={() => setSelectedCategory('semanal')}
                     >
@@ -134,14 +134,15 @@ export default function Dashboard() {
                     </Button>
                     <Button
                         className={`${selectedCategory === 'mensal'
-                            ? 'bg-[#DEEAFF] text-[#2955D9]'
-                            : 'bg-white text-black border border-gray-300 hover:bg-[#DEEAFF] hover:text-[#2955D9]'
+                            ? 'bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]'
+                            : 'bg-white text-black border border-gray-300 hover:bg-[#ECF2FF] hover:text-[#2955D9]'
                             }`}
                         onClick={() => setSelectedCategory('mensal')}
                     >
                         Mensal
                     </Button>
                 </div>
+
                 <div className="flex gap-4">
                     <div className="flex gap-4">
                         <div className="flex items-center gap-2">
@@ -214,7 +215,7 @@ export default function Dashboard() {
                                 ].map((status, index) => (
                                     <div key={index} className="flex items-center px-2 gap-2 mt-2">
                                         <div className="w-4 h-4 rounded" style={{ backgroundColor: status.color }}></div>
-                                        <h1>{status.label}</h1>
+                                        <h1 className="py-2">{status.label}</h1>
                                     </div>
                                 ))}
                             </div>
@@ -283,7 +284,7 @@ export default function Dashboard() {
                                 ].map((status, index) => (
                                     <div key={index} className="flex items-center px-2 gap-2 mt-2">
                                         <div className="w-4 h-4 rounded" style={{ backgroundColor: status.color }}></div>
-                                        <h1>{status.label}</h1>
+                                        <h1 className="py-2">{status.label}</h1>
                                     </div>
                                 ))}
                             </div>
@@ -355,10 +356,9 @@ export default function Dashboard() {
 
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
                 <DialogOverlay className="fixed inset-0 bg-black/50" />
-                <DialogContent className="fixed bg-white p-6 rounded-lg shadow-lg top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[90vh] overflow-y-auto">
+                <DialogContent className="fixed bg-white p-6 rounded-lg top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[90vh] overflow-y-auto">
                     <DialogTitle className="text-lg font-semibold mb-4">Detalhes do Agendamento</DialogTitle>
                     <div className="grid grid-cols-2 gap-4">
-                        {/* Adicione informações do agendamento aqui */}
                     </div>
                     <div className="flex items-center mt-4 justify-end">
                         <Button onClick={() => setIsModalOpen(false)}>Fechar</Button>
@@ -368,7 +368,7 @@ export default function Dashboard() {
 
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
                 <DialogOverlay className="fixed inset-0 bg-black/50" />
-                <DialogContent className="fixed bg-white p-6 rounded-lg shadow-lg top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[90vh] overflow-y-auto">
+                <DialogContent className="fixed bg-white p-6 rounded-lg top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[90vh] overflow-y-auto">
                     <DialogTitle className="text-lg font-semibold mb-4">Detalhes do Agendamento</DialogTitle>
                     <div className="grid grid-cols-2 gap-4">
 
