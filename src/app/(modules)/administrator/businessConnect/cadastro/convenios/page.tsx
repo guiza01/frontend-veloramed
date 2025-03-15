@@ -6,8 +6,7 @@ import { Dialog, DialogContent, DialogOverlay, DialogTitle } from "@/components/
 import { Input } from "@/components/ui/input";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { Search, Filter, ChevronLeft, ChevronRight } from "lucide-react";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { FaPlus } from "react-icons/fa";
 import { useRouter } from "next/navigation";
@@ -54,6 +53,10 @@ export default function ConveriosList() {
     const [selectedType, setSelectedType] = useState("Consulta");
     const [step, setStep] = useState<number>(1);
 
+    const [especialidades, setEspecialidades] = useState<string[]>([]);
+    const [exames, setExames] = useState<{ nome: string, valor: number }[]>([]);
+    const [procedimentos, setProcedimentos] = useState<{ nome: string, valor: number }[]>([]);
+
     const nextStep = () => {
         setStep((prevStep) => {
             if (prevStep === 1) {
@@ -82,8 +85,11 @@ export default function ConveriosList() {
         });
     };
 
-    return (
+    const addEspecialidade = () => setEspecialidades([...especialidades, ""]);
+    const addExame = () => setExames([...exames, { nome: "", valor: 0 }]);
+    const addProcedimento = () => setProcedimentos([...procedimentos, { nome: "", valor: 0 }]);
 
+    return (
         <div className="mx-auto min-h-screen p-4 bg-[#FAFAFA] flex flex-col">
             <div className="flex justify-between py-4">
                 <h1 className="text-xl flex items-center font-bold">Cadastro de Convênios</h1>
@@ -195,8 +201,20 @@ export default function ConveriosList() {
                         {selectedType === "Consulta" && (
                             <div>
                                 <span>Especialidade</span>
-                                <Input placeholder="Digite aqui" />
-                                <Button className="mt-2" variant={'ghost'}>
+                                {especialidades.map((especialidade, index) => (
+                                    <div key={index} className="flex gap-4 mb-2">
+                                        <Input
+                                            placeholder="Digite aqui"
+                                            value={especialidade}
+                                            onChange={(e) => {
+                                                const newEspecialidades = [...especialidades];
+                                                newEspecialidades[index] = e.target.value;
+                                                setEspecialidades(newEspecialidades);
+                                            }}
+                                        />
+                                    </div>
+                                ))}
+                                <Button className="mt-2" variant={'ghost'} onClick={addEspecialidade}>
                                     <FaPlus />
                                     Adicionar especialidade
                                 </Button>
@@ -206,11 +224,30 @@ export default function ConveriosList() {
                         {selectedType === "Exame" && (
                             <div>
                                 <span>Exame:</span>
-                                <div className="flex gap-4 w-full">
-                                    <Input placeholder="Digite aqui" />
-                                    <Input placeholder="Valor" type="number" />
-                                </div>
-                                <Button className="mt-2" variant={'ghost'}>
+                                {exames.map((exame, index) => (
+                                    <div key={index} className="flex gap-4 w-full mb-2">
+                                        <Input
+                                            placeholder="Digite o exame"
+                                            value={exame.nome}
+                                            onChange={(e) => {
+                                                const newExames = [...exames];
+                                                newExames[index].nome = e.target.value;
+                                                setExames(newExames);
+                                            }}
+                                        />
+                                        <Input
+                                            placeholder="Valor"
+                                            type="text"
+                                            value={exame.valor}
+                                            onChange={(e) => {
+                                                const newExames = [...exames];
+                                                newExames[index].valor = parseFloat(e.target.value);
+                                                setExames(newExames);
+                                            }}
+                                        />
+                                    </div>
+                                ))}
+                                <Button className="mt-2" variant={'ghost'} onClick={addExame}>
                                     <FaPlus />
                                     Adicionar exame
                                 </Button>
@@ -220,11 +257,30 @@ export default function ConveriosList() {
                         {selectedType === "Procedimento" && (
                             <div>
                                 <span>Procedimento:</span>
-                                <div className="flex gap-4 w-full">
-                                    <Input placeholder="Digite aqui" />
-                                    <Input placeholder="Valor" type="number" />
-                                </div>
-                                <Button className="mt-2" variant={'ghost'}>
+                                {procedimentos.map((procedimento, index) => (
+                                    <div key={index} className="flex gap-4 w-full mb-2">
+                                        <Input
+                                            placeholder="Digite o procedimento"
+                                            value={procedimento.nome}
+                                            onChange={(e) => {
+                                                const newProcedimentos = [...procedimentos];
+                                                newProcedimentos[index].nome = e.target.value;
+                                                setProcedimentos(newProcedimentos);
+                                            }}
+                                        />
+                                        <Input
+                                            placeholder="Valor"
+                                            type="text"
+                                            value={procedimento.valor}
+                                            onChange={(e) => {
+                                                const newProcedimentos = [...procedimentos];
+                                                newProcedimentos[index].valor = parseFloat(e.target.value);
+                                                setProcedimentos(newProcedimentos);
+                                            }}
+                                        />
+                                    </div>
+                                ))}
+                                <Button className="mt-2" variant={'ghost'} onClick={addProcedimento}>
                                     <FaPlus />
                                     Adicionar procedimento
                                 </Button>
@@ -240,7 +296,6 @@ export default function ConveriosList() {
                     </div>
                 </DialogContent>
             </Dialog>
-
         </div>
     );
 }
