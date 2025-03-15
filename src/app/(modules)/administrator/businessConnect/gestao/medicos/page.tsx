@@ -165,15 +165,15 @@ export default function MedicosList() {
                     {step === 1 && (
                         <div>
                             <span className='text-[14px]'>Nome completo <span className='text-[red]'>*</span></span>
-                            <Input placeholder="Nome completo" className="mb-6" />
+                            <Input placeholder="Nome completo" className="mb-6 mt-2" />
 
                             <span className='text-[14px]'>E-mail <span className='text-[red]'>*</span></span>
-                            <Input placeholder="E-mail" className="mb-6" />
+                            <Input placeholder="E-mail" className="mb-6 mt-2" />
 
                             <span className='text-[14px]'>
                                 Senha <span className='text-[red]'>*</span>
                             </span>
-                            <div className="relative">
+                            <div className="relative mt-2">
                                 <Input
                                     type={showPassword ? "text" : "password"}
                                     placeholder="********"
@@ -189,16 +189,16 @@ export default function MedicosList() {
                             </div>
 
                             <span className='text-[14px]'>Chave PIX <span className='text-[red]'>*</span></span>
-                            <Input placeholder="Chave PIX" className="mb-6" />
+                            <Input placeholder="Chave PIX" className="mb-6 mt-2" />
 
                             <span className='text-[14px]'>Número da sala <span className='text-[red]'>*</span></span>
-                            <Input placeholder="Número da sala" className="mb-6" />
+                            <Input placeholder="Número da sala" className="mb-6 mt-2" />
 
                             <span className='text-[14px]'>Foto do Profissional <span className='text-[red]'>*</span></span>
                             <div className="flex flex-col items-center">
                                 <label
                                     htmlFor="fileUpload"
-                                    className="cursor-pointer flex w-full items-center justify-center gap-2 bg-[#FAFAFA] px-4 py-2 rounded-lg border border-black border-dashed hover:bg-gray-300 transition"
+                                    className="cursor-pointer mt-2 flex w-full items-center justify-center gap-2 bg-[#FAFAFA] px-4 py-2 rounded-lg border border-black border-dashed hover:bg-gray-300 transition"
                                 >
                                     <Upload size={18} />
                                     {selectedFile ? selectedFile.name : "Clique para efetuar o upload!"}
@@ -223,13 +223,13 @@ export default function MedicosList() {
                             <span className="text-[14px]">
                                 Especialidade e Convênio <span className="text-[red]">*</span>
                             </span>
-                            <Input placeholder="Especialidade e Convênio" className="mb-6" />
+                            <Input placeholder="Especialidade e Convênio" className="mb-6 mt-2" />
 
                             <span className="text-[14px]">Preencha abaixo o que o profissional efetua:</span>
 
                             <Disclosure>
                                 {({ open }) => (
-                                    <div className="flex flex-col items-start w-full px-4 py-2 mb-6 border border-gray-300 rounded-md text-left text-black">
+                                    <div className="flex flex-col items-start w-full px-4 py-2 mb-6 mt-2 border border-gray-300 rounded-md text-left text-black">
                                         <Disclosure.Button
                                             className={`flex w-full items-center justify-between ${open ? "pb-2 border-b border-gray-300" : ""}`}
                                         >
@@ -238,9 +238,9 @@ export default function MedicosList() {
                                         </Disclosure.Button>
                                         <Disclosure.Panel className="mt-4 w-full">
                                             <span className="text-[14px]">Tempo de atendimento (por convênio)</span>
-                                            <Input placeholder="Tempo de atendimento (por convênio)" className="mb-6 w-full" />
+                                            <Input placeholder="Tempo de atendimento (por convênio)" className="mb-6 mt-2 w-full" />
                                             <span className="text-[14px]">Tempo de atendimento (particular)</span>
-                                            <Input placeholder="Tempo de atendimento (particular)" className="mb-6" />
+                                            <Input placeholder="Tempo de atendimento (particular)" className="mb-6 mt-2" />
                                         </Disclosure.Panel>
                                     </div>
                                 )}
@@ -258,9 +258,9 @@ export default function MedicosList() {
 
                                         <Disclosure.Panel className="mt-4 w-full">
                                             <span className="text-[14px]">Tempo de atendimento (por convênio)</span>
-                                            <Input placeholder="Tempo de atendimento (por convênio)" className="mb-6" />
+                                            <Input placeholder="Tempo de atendimento (por convênio)" className="mb-6 mt-2" />
                                             <span className="text-[14px]">Tempo de atendimento (particular)</span>
-                                            <Input placeholder="Tempo de atendimento (particular)" className="mb-6" />
+                                            <Input placeholder="Tempo de atendimento (particular)" className="mb-6 mt-2" />
                                         </Disclosure.Panel>
                                     </div>
                                 )}
@@ -278,9 +278,9 @@ export default function MedicosList() {
 
                                         <Disclosure.Panel className="mt-4 w-full">
                                             <span className="text-[14px]">Adicionar procedimento</span>
-                                            <Input placeholder="Nome do procedimento" className="mb-6" />
-                                            <Input placeholder="Tempo de atendimento" className="mb-6" />
-                                            <Input placeholder="Valor" className="mb-6" />
+                                            <Input placeholder="Nome do procedimento" className="mb-6 mt-2" />
+                                            <Input placeholder="Tempo de atendimento" className="mb-6 mt-2" />
+                                            <Input placeholder="Valor" className="mb-6 mt-2" />
                                             <div className="mb-6">
                                                 <textarea
                                                     placeholder="Descrição"

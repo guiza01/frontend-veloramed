@@ -94,7 +94,7 @@ export default function AtendentesList() {
                                 </div>
                                 <p className="text-sm text-gray-500">{attendant.email}</p>
                                 <p className="text-sm text-gray-500">{attendant.recepcao}</p>
-                                <button onClick={toggleDetails} className="text-blue-500">
+                                <button onClick={toggleDetails} className="text-blue-500 mr-6">
                                     {isOpen ? <FaChevronUp className="text-gray-500" /> : <FaChevronDown className="text-gray-500" />}
                                 </button>
                             </CardContent>
@@ -191,10 +191,10 @@ export default function AtendentesList() {
                     {step === 1 && (
                         <div>
                             <span className='text-[14px]'>Nome completo <span className='text-[red]'>*</span></span>
-                            <Input placeholder="Nome completo" className="mb-6" />
+                            <Input placeholder="Nome completo" className="mb-6 mt-2" />
 
                             <span className='text-[14px]'>E-mail <span className='text-[red]'>*</span></span>
-                            <Input placeholder="E-mail" className="mb-6" />
+                            <Input placeholder="E-mail" className="mb-6 mt-2" />
 
                             <span className='text-[14px]'>
                                 Senha <span className='text-[red]'>*</span>
@@ -203,7 +203,7 @@ export default function AtendentesList() {
                                 <Input
                                     type={showPassword ? "text" : "password"}
                                     placeholder="********"
-                                    className="mb-6 pr-10"
+                                    className="mb-6 mt-2 pr-10"
                                 />
                                 <button
                                     type="button"
@@ -215,13 +215,13 @@ export default function AtendentesList() {
                             </div>
 
                             <span className='text-[14px]'>Recepção <span className='text-[red]'>*</span></span>
-                            <Input placeholder="Digite aqui" className="mb-6" />
+                            <Input placeholder="Digite aqui" className="mb-6 mt-2" />
 
                             <span className='text-[14px]'>Foto do Profissional <span className='text-[red]'>*</span></span>
                             <div className="flex flex-col items-center">
                                 <label
                                     htmlFor="fileUpload"
-                                    className="cursor-pointer flex w-full items-center justify-center gap-2 bg-[#FAFAFA] px-4 py-2 rounded-lg border border-black border-dashed hover:bg-gray-300 transition"
+                                    className="cursor-pointer flex w-full items-center mt-2 justify-center gap-2 bg-[#FAFAFA] px-4 py-2 rounded-lg border border-black border-dashed hover:bg-gray-300 transition"
                                 >
                                     <Upload size={18} />
                                     {selectedFile ? selectedFile.name : "Clique para efetuar o upload!"}
