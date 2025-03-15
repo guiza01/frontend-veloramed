@@ -111,7 +111,10 @@ export default function ConveriosList() {
                 <div className="flex-grow bg-[#FAFAFA] rounded-lg overflow-y-auto">
                     {convenios.map((convenio, index) => (
                         <Card key={index} className="border-b mb-4">
-                            <CardContent className="flex items-center p-4 gap-4">
+                            <CardContent
+                                className="flex items-center p-4 gap-4 cursor-pointer"
+                                onClick={() => router.push(`/administrator/businessConnect/cadastro/convenios/edit`)}
+                            >
                                 <img
                                     src={convenio.avatar}
                                     alt="Avatar"
@@ -121,7 +124,9 @@ export default function ConveriosList() {
                                     <p className="font-semibold">{convenio.name}</p>
                                     <p className="text-sm text-gray-500">{convenio.content}</p>
                                 </div>
-                                <Button variant="outline" onClick={() => router.push(`/administrator/businessConnect/cadastro/convenios/edit`)}>Detalhes</Button>
+                                <Button variant="outline">
+                                    Detalhes
+                                </Button>
                             </CardContent>
                         </Card>
                     ))}

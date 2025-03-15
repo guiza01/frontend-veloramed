@@ -86,13 +86,16 @@ export default function MedicosList() {
                 <div className="flex-grow bg-[#FAFAFA] rounded-lg overflow-y-auto">
                     {doctors.map((doctor, index) => (
                         <Card key={index} className="border-b mb-4">
-                            <CardContent className="flex items-center p-4 gap-4">
+                            <CardContent
+                                className="flex items-center p-4 gap-4 cursor-pointer"
+                                onClick={() => router.push(`/administrator/businessConnect/gestao/medicos/edit`)}
+                            >
                                 <img src={doctor.avatar} alt="Avatar" className="w-12 h-12 rounded-full" />
                                 <div className="flex-1">
                                     <p className="font-semibold">{doctor.name}</p>
                                     <p className="text-sm text-gray-500">{doctor.specialty} • {doctor.plan} • {doctor.room}</p>
                                 </div>
-                                <Button variant="outline" onClick={() => router.push(`/administrator/businessConnect/gestao/medicos/edit`)}>
+                                <Button variant="outline">
                                     Detalhes
                                 </Button>
                             </CardContent>
