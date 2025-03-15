@@ -79,10 +79,10 @@ export default function PatientsPage() {
           </Button>
         </div>
       </div>
-      {mockPatients.map((patient, index) => (
 
+      {mockPatients.map((patient, index) => (
         <div key={index} className="mt-4 p-4 bg-white rounded-xl flex justify-between items-center">
-          <div className="flex flex-col" key={index}>
+          <div className="flex flex-col">
             <span>{patient.name}</span>
             <div className="flex flex-col items-start md:items-center md:justify-start md:flex-row md:divide-x w-full text-xs text-[#666870]">
               <span className="text-center px-2">{patient.agreement}</span>
@@ -100,7 +100,7 @@ export default function PatientsPage() {
         </div>
       ))}
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto mt-auto">
         <Pagination className="w-full mt-4">
           <PaginationContent className="flex w-full justify-between bg-white rounded-md py-2">
             <PaginationItem>
@@ -108,7 +108,9 @@ export default function PatientsPage() {
             </PaginationItem>
             <div className="flex">
               <PaginationItem>
-                <PaginationLink href="#" isActive className="bg-[#2955D9] text-xs rounded-[8px]"><span className="text-white">1</span></PaginationLink>
+                <PaginationLink href="#" isActive className="bg-[#2955D9] text-xs rounded-[8px]">
+                  <span className="text-white">1</span>
+                </PaginationLink>
               </PaginationItem>
               <PaginationItem>
                 <PaginationLink className="text-xs" href="#">
@@ -143,7 +145,6 @@ export default function PatientsPage() {
           </PaginationContent>
         </Pagination>
       </div>
-
     </main>
   );
 }
