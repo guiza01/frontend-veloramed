@@ -1,27 +1,27 @@
 "use client"
-import { useState } from 'react';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { useState, useEffect } from 'react';
+import { FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
 import Link from 'next/link';
-import { LuSquareUser } from 'react-icons/lu';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { LuSquareUser, LuStethoscope } from 'react-icons/lu';
 import { MdOutlineDashboard } from "react-icons/md";
 import { LiaClipboardListSolid } from "react-icons/lia";
-import { LuStethoscope } from "react-icons/lu";
 import { IoIosLogOut } from "react-icons/io";
-import { FiChevronDown } from 'react-icons/fi';
-import Image from 'next/image';
 
 const Sidebar = () => {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('Integração');
   const [gestaoOpen, setGestaoOpen] = useState(false);
   const [cadastroOpen, setCadastroOpen] = useState(false);
 
+  useEffect(() => {
+    setGestaoOpen(pathname.includes('/gestao'));
+    setCadastroOpen(pathname.includes('/cadastro'));
+  }, [pathname]);
+
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
-  };
-
-  const handleTabClick = (tabName: string) => {
-    setActiveTab(tabName);
   };
 
   return (
@@ -41,37 +41,47 @@ const Sidebar = () => {
           </button>
         </div>
         <ul className="p-4 space-y-4 text-sm">
-          <li onClick={() => handleTabClick('Integração')} className={`p-2 rounded-md cursor-pointer hover:bg-gray-100 ${activeTab === 'Integração' ? 'text-[#2955D9] border border-[#2955D9]' : ''}`}>
+          <li className={`p-2 rounded-md cursor-pointer hover:bg-gray-100 ${pathname === '/administrator/businessConnect/dashboard' ? 'text-[#2955D9] border border-[#2955D9]' : ''}`}>
             <Link href="/administrator/businessConnect/dashboard" className="flex items-center">
               <MdOutlineDashboard className="mr-2" /> Dashboard
             </Link>
           </li>
           <li className="p-2 rounded-md cursor-pointer hover:bg-gray-100" onClick={() => setGestaoOpen(!gestaoOpen)}>
             <div className="flex items-center justify-between">
-              <Link href="#" className="flex items-center">
+              <span className={`flex items-center ${gestaoOpen ? 'text-[#2955D9]' : ''}`}>
                 <LuSquareUser className="mr-2" /> Gestão
-              </Link>
+              </span>
               <FiChevronDown className={`${gestaoOpen ? 'rotate-180' : ''} transition-transform`} />
             </div>
             {gestaoOpen && (
               <ul className="ml-4 mt-2 space-y-2">
-                <li><Link href="/administrator/businessConnect/gestao/medicos" className="block p-2 hover:bg-gray-100">Médicos</Link></li>
-                <li><Link href="/administrator/businessConnect/gestao/atendentes" className="block p-2 hover:bg-gray-100">Atendentes</Link></li>
+                <li className={`${pathname.includes('/gestao/medicos') ? 'text-[#2955D9]' : ''}`}>
+                  <Link href="/administrator/businessConnect/gestao/medicos" className="block p-2 hover:bg-gray-100">Médicos</Link>
+                </li>
+                <li className={`${pathname.includes('/gestao/atendentes') ? 'text-[#2955D9]' : ''}`}>
+                  <Link href="/administrator/businessConnect/gestao/atendentes" className="block p-2 hover:bg-gray-100">Atendentes</Link>
+                </li>
               </ul>
             )}
           </li>
           <li className="p-2 rounded-md cursor-pointer hover:bg-gray-100" onClick={() => setCadastroOpen(!cadastroOpen)}>
             <div className="flex items-center justify-between">
-              <Link href="#" className="flex items-center">
+              <span className={`flex items-center ${cadastroOpen ? 'text-[#2955D9]' : ''}`}>
                 <LiaClipboardListSolid className="mr-2" /> Cadastro
-              </Link>
+              </span>
               <FiChevronDown className={`${cadastroOpen ? 'rotate-180' : ''} transition-transform`} />
             </div>
             {cadastroOpen && (
               <ul className="ml-4 mt-2 space-y-2">
-                <li><Link href="/administrator/businessConnect/cadastro/convenios" className="block p-2 hover:bg-gray-100">Convênios</Link></li>
-                <li><Link href="/administrator/businessConnect/cadastro/tabelas" className="block p-2 hover:bg-gray-100">Tabela de valores</Link></li>
-                <li><Link href="/administrator/businessConnect/cadastro/agenda" className="block p-2 hover:bg-gray-100">Agenda</Link></li>
+                <li className={`${pathname.includes('/cadastro/convenios') ? 'text-[#2955D9]' : ''}`}>
+                  <Link href="/administrator/businessConnect/cadastro/convenios" className="block p-2 hover:bg-gray-100">Convênios</Link>
+                </li>
+                <li className={`${pathname.includes('/cadastro/tabelas') ? 'text-[#2955D9]' : ''}`}>
+                  <Link href="/administrator/businessConnect/cadastro/tabelas" className="block p-2 hover:bg-gray-100">Tabela de valores</Link>
+                </li>
+                <li className={`${pathname.includes('/cadastro/agenda') ? 'text-[#2955D9]' : ''}`}>
+                  <Link href="/administrator/businessConnect/cadastro/agenda" className="block p-2 hover:bg-gray-100">Agenda</Link>
+                </li>
               </ul>
             )}
           </li>
