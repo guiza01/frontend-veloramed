@@ -181,7 +181,7 @@ export default function ConveriosList() {
                                 Selecione o convênio <span className="text-[red]">*</span>
                             </span>
                             <Select>
-                                <SelectTrigger className="w-full mb-6">
+                                <SelectTrigger className="w-full mb-6 mt-2">
                                     <SelectValue placeholder="Selecione um convênio" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -202,7 +202,7 @@ export default function ConveriosList() {
                             <div>
                                 <span>Especialidade</span>
                                 {especialidades.map((especialidade, index) => (
-                                    <div key={index} className="flex gap-4 mb-2">
+                                    <div key={index} className="flex gap-4 mb-2 mt-2">
                                         <Input
                                             placeholder="Digite aqui"
                                             value={especialidade}
@@ -225,7 +225,7 @@ export default function ConveriosList() {
                             <div>
                                 <span>Exame:</span>
                                 {exames.map((exame, index) => (
-                                    <div key={index} className="flex gap-4 w-full mb-2">
+                                    <div key={index} className="flex gap-4 w-full mb-2 mt-2">
                                         <Input
                                             placeholder="Digite o exame"
                                             value={exame.nome}
@@ -258,7 +258,7 @@ export default function ConveriosList() {
                             <div>
                                 <span>Procedimento:</span>
                                 {procedimentos.map((procedimento, index) => (
-                                    <div key={index} className="flex gap-4 w-full mb-2">
+                                    <div key={index} className="flex gap-4 w-full mb-2 mt-2">
                                         <Input
                                             placeholder="Digite o procedimento"
                                             value={procedimento.nome}
