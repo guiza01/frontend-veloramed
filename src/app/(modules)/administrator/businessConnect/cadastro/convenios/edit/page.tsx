@@ -97,7 +97,7 @@ export default function ConverioEdit() {
             <div className="bg-[#FFFFFF] flex flex-wrap w-full mt-6 p-4">
                 <button
                     onClick={() => toggleMenu('consultas')}
-                    className={`flex items-center justify-between w-full text-xl font-semibold ${openMenus.consultas ? 'border-b pb-2 border-[#666870]' : ''}`}
+                    className={`flex items-center justify-between w-full text-xl font-semibold ${openMenus.consultas ? 'border-b pb-2 border-gray-300' : ''}`}
                 >
                     <span className="text-[#666870] text-[16px]">Consultas</span>
                     {openMenus.consultas ? (
@@ -110,22 +110,22 @@ export default function ConverioEdit() {
                 {openMenus.consultas && (
                     <div className="flex flex-wrap w-full mt-4 px-2">
                         <div className="flex items-center gap-4 w-1/3 mb-8">
-                            <h1>Pediatria</h1>
+                            <h1 className="font-semibold">Pediatria</h1>
                         </div>
                         <div className="flex items-center gap-4 w-1/3 mb-8">
-                            <h1>Nutrição</h1>
+                            <h1 className="font-semibold">Nutrição</h1>
                         </div>
                         <div className="flex items-center gap-4 w-1/3 mb-8">
-                            <h1>Geriatria</h1>
+                            <h1 className="font-semibold">Geriatria</h1>
                         </div>
                         <div className="flex items-center gap-4 w-1/3 mb-8">
-                            <h1>Pediatria</h1>
+                            <h1 className="font-semibold">Pediatria</h1>
                         </div>
                         <div className="flex items-center gap-4 w-1/3 mb-8">
-                            <h1>Nutrição</h1>
+                            <h1 className="font-semibold">Nutrição</h1>
                         </div>
                         <div className="flex items-center gap-4 w-1/3 mb-8">
-                            <h1>Geriatria</h1>
+                            <h1 className="font-semibold">Geriatria</h1>
                         </div>
                     </div>
                 )}
@@ -134,7 +134,7 @@ export default function ConverioEdit() {
             <div className="bg-[#FFFFFF] flex flex-wrap w-full mt-6 p-4">
                 <button
                     onClick={() => toggleMenu('exames')}
-                    className={`flex items-center justify-between w-full text-xl font-semibold ${openMenus.exames ? 'border-b pb-2 border-[#666870]' : ''}`}
+                    className={`flex items-center justify-between w-full text-xl font-semibold ${openMenus.exames ? 'border-b pb-2 border-gray-300' : ''}`}
                 >
                     <span className="text-[#666870] text-[16px]">Exames</span>
                     {openMenus.exames ? (
@@ -147,28 +147,28 @@ export default function ConverioEdit() {
                 {openMenus.exames && (
                     <div className="flex flex-wrap w-full mt-4">
                         <div className="flex items-center justify-between px-2 gap-4 w-1/3 mb-8">
-                            <h1>Bioimpedância</h1>
-                            <h1>R$350.00</h1>
+                            <h1 className="font-semibold">Bioimpedância</h1>
+                            <h1 className="font-semibold text-gray-500">R$350.00</h1>
                         </div>
                         <div className="flex items-center justify-between px-2 gap-4 w-1/3 mb-8">
-                            <h1>Bioimpedância</h1>
-                            <h1>R$350.00</h1>
+                            <h1 className="font-semibold">Bioimpedância</h1>
+                            <h1 className="font-semibold text-gray-500">R$350.00</h1>
                         </div>
                         <div className="flex items-center justify-between px-2 gap-4 w-1/3 mb-8">
-                            <h1>Bioimpedância</h1>
-                            <h1>R$350.00</h1>
+                            <h1 className="font-semibold">Bioimpedância</h1>
+                            <h1 className="font-semibold text-gray-500">R$350.00</h1>
                         </div>
                         <div className="flex items-center justify-between px-2 gap-4 w-1/3 mb-8">
-                            <h1>Bioimpedância</h1>
-                            <h1>R$350.00</h1>
+                            <h1 className="font-semibold">Bioimpedância</h1>
+                            <h1 className="font-semibold text-gray-500">R$350.00</h1>
                         </div>
                         <div className="flex items-center justify-between px-2 gap-4 w-1/3 mb-8">
-                            <h1>Bioimpedância</h1>
-                            <h1>R$350.00</h1>
+                            <h1 className="font-semibold">Bioimpedância</h1>
+                            <h1 className="font-semibold text-gray-500">R$350.00</h1>
                         </div>
                         <div className="flex items-center justify-between px-2 gap-4 w-1/3 mb-8">
-                            <h1>Bioimpedância</h1>
-                            <h1>R$350.00</h1>
+                            <h1 className="font-semibold">Bioimpedância</h1>
+                            <h1 className="font-semibold text-gray-500">R$350.00</h1>
                         </div>
                     </div>
                 )}
@@ -177,9 +177,9 @@ export default function ConverioEdit() {
             <div className="bg-[#FFFFFF] flex flex-wrap w-full mt-6 p-4">
                 <button
                     onClick={() => toggleMenu('procedimento')}
-                    className={`flex items-center justify-between w-full text-xl font-semibold ${openMenus.procedimento ? 'border-b pb-2 border-[#666870]' : ''}`}
+                    className={`flex items-center justify-between w-full text-xl font-semibold ${openMenus.procedimento ? 'border-b pb-2 border-gray-300' : ''}`}
                 >
-                    <span className="text-[#666870] text-[16px]">procedimento</span>
+                    <span className="text-[#666870] text-[16px]">Procedimento</span>
                     {openMenus.procedimento ? (
                         <FaChevronUp className="text-[#666870]" />
                     ) : (
@@ -190,28 +190,28 @@ export default function ConverioEdit() {
                 {openMenus.procedimento && (
                     <div className="flex flex-wrap w-full mt-4">
                         <div className="flex items-center justify-between px-2 gap-4 w-1/3 mb-8">
-                            <h1>Drenagem linfática</h1>
-                            <h1>R$350.00</h1>
+                            <h1 className="font-semibold">Drenagem linfática</h1>
+                            <h1 className="font-semibold text-gray-500">R$350.00</h1>
                         </div>
                         <div className="flex items-center justify-between px-2 gap-4 w-1/3 mb-8">
-                            <h1>Drenagem linfática</h1>
-                            <h1>R$350.00</h1>
+                            <h1 className="font-semibold">Drenagem linfática</h1>
+                            <h1 className="font-semibold text-gray-500">R$350.00</h1>
                         </div>
                         <div className="flex items-center justify-between px-2 gap-4 w-1/3 mb-8">
-                            <h1>Drenagem linfática</h1>
-                            <h1>R$350.00</h1>
+                            <h1 className="font-semibold">Drenagem linfática</h1>
+                            <h1 className="font-semibold text-gray-500">R$350.00</h1>
                         </div>
                         <div className="flex items-center justify-between px-2 gap-4 w-1/3 mb-8">
-                            <h1>Drenagem linfática</h1>
-                            <h1>R$350.00</h1>
+                            <h1 className="font-semibold">Drenagem linfática</h1>
+                            <h1 className="font-semibold text-gray-500">R$350.00</h1>
                         </div>
                         <div className="flex items-center justify-between px-2 gap-4 w-1/3 mb-8">
-                            <h1>Drenagem linfática</h1>
-                            <h1>R$350.00</h1>
+                            <h1 className="font-semibold">Drenagem linfática</h1>
+                            <h1 className="font-semibold text-gray-500">R$350.00</h1>
                         </div>
                         <div className="flex items-center justify-between px-2 gap-4 w-1/3 mb-8">
-                            <h1>Drenagem linfática</h1>
-                            <h1>R$350.00</h1>
+                            <h1 className="font-semibold">Drenagem linfática</h1>
+                            <h1 className="font-semibold text-gray-500">R$350.00</h1>
                         </div>
                     </div>
                 )}
