@@ -9,6 +9,7 @@ import { ArrowLeft, BriefcaseMedical, Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp, FaPlus } from "react-icons/fa";
+import { FiTrash2 } from "react-icons/fi";
 
 interface Convenio {
     name: string;
@@ -221,7 +222,7 @@ export default function ConverioEdit() {
                 <AlertDialog>
                     <AlertDialogTrigger asChild>
                         <Button variant="ghost">
-                            <Trash />
+                            <FiTrash2 />
                         </Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>

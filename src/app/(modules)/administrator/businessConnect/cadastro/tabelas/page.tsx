@@ -1,16 +1,28 @@
 "use client";
 
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import { 
+    AlertDialog, 
+    AlertDialogAction, 
+    AlertDialogCancel, 
+    AlertDialogContent, 
+    AlertDialogDescription, 
+    AlertDialogFooter, 
+    AlertDialogHeader, 
+    AlertDialogTitle, 
+    AlertDialogTrigger 
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogOverlay, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { ChevronLeft, ChevronRight, Edit, Search, Trash } from "lucide-react";
+import { Search } from "lucide-react";
+import { HiOutlinePencil } from "react-icons/hi2";
 import React from "react";
 import { useState } from "react";
+import { FiTrash2 } from "react-icons/fi";
 
 const consultas = Array(5).fill({
     name: 'Nutrição',
@@ -86,29 +98,29 @@ export default function TabelaDePrecos() {
 
             <div className="gap-1 py-4">
                 <Button
-                    className={`mr-2 ${selectedCategory === 'consultas'
-                        ? 'bg-[#DEEAFF] text-[#2955D9]'
-                        : 'bg-white text-black border border-gray-300 hover:bg-[#DEEAFF] hover:text-[#2955D9]'
+                    className={`mr-2 ${selectedCategory === "consultas"
+                        ? "bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]"
+                        : "bg-white text-black border border-gray-300 hover:bg-[#ECF2FF] hover:text-[#2955D9]"
                         }`}
-                    onClick={() => setSelectedCategory('consultas')}
+                    onClick={() => setSelectedCategory("consultas")}
                 >
                     Consultas
                 </Button>
                 <Button
-                    className={`mr-2 ${selectedCategory === 'exames'
-                        ? 'bg-[#DEEAFF] text-[#2955D9]'
-                        : 'bg-white text-black border border-gray-300 hover:bg-[#DEEAFF] hover:text-[#2955D9]'
+                    className={`mr-2 ${selectedCategory === "exames"
+                        ? "bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]"
+                        : "bg-white text-black border border-gray-300 hover:bg-[#ECF2FF] hover:text-[#2955D9]"
                         }`}
-                    onClick={() => setSelectedCategory('exames')}
+                    onClick={() => setSelectedCategory("exames")}
                 >
                     Exames
                 </Button>
                 <Button
-                    className={`${selectedCategory === 'procedimentos'
-                        ? 'bg-[#DEEAFF] text-[#2955D9]'
-                        : 'bg-white text-black border border-gray-300 hover:bg-[#DEEAFF] hover:text-[#2955D9]'
+                    className={`${selectedCategory === "procedimentos"
+                        ? "bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]"
+                        : "bg-white text-black border border-gray-300 hover:bg-[#ECF2FF] hover:text-[#2955D9]"
                         }`}
-                    onClick={() => setSelectedCategory('procedimentos')}
+                    onClick={() => setSelectedCategory("procedimentos")}
                 >
                     Procedimentos
                 </Button>
@@ -138,12 +150,12 @@ export default function TabelaDePrecos() {
                                 </div>
                                 <div className="gap-4">
                                     <Button variant="ghost" onClick={() => setIsModalEditOpen(true)}>
-                                        <Edit />
+                                        <HiOutlinePencil />
                                     </Button>
                                     <AlertDialog>
                                         <AlertDialogTrigger asChild>
                                             <Button variant="ghost">
-                                                <Trash />
+                                                <FiTrash2 />
                                             </Button>
                                         </AlertDialogTrigger>
                                         <AlertDialogContent>
@@ -165,36 +177,52 @@ export default function TabelaDePrecos() {
                     ))}
                 </div>
 
-                <div className="bg-[#FFFFFF] shadow flex justify-between items-center p-4 mt-4">
-                    <PaginationPrevious className="text-gray-700 hover:bg-gray-200 p-2 rounded">
-                        <ChevronLeft size={18} className="mr-2" />
-                        Anterior
-                    </PaginationPrevious>
-
-                    <Pagination className="flex space-x-2">
-                        <PaginationContent>
-                            {[1, 2, '...', 9, 10].map((num, idx) => (
-                                <React.Fragment key={idx}>
-                                    {num === '...' ? (
-                                        <PaginationEllipsis />
-                                    ) : (
-                                        <PaginationItem
-                                            isActive={num === 1}
-                                            className={`px-3 py-1 rounded-full text-center cursor-pointer ${num === 1 ? 'bg-blue-500 text-white' : 'text-gray-700 hover:bg-gray-100'
-                                                }`}
-                                        >
-                                            {num}
-                                        </PaginationItem>
-                                    )}
-                                </React.Fragment>
-                            ))}
+                <div className="overflow-x-auto mt-auto">
+                    <Pagination className="w-full mt-4">
+                        <PaginationContent className="flex w-full justify-between bg-white rounded-md py-2">
+                            <PaginationItem>
+                                <PaginationPrevious href="#" />
+                            </PaginationItem>
+                            <div className="flex">
+                                <PaginationItem>
+                                    <PaginationLink href="#" isActive className="bg-[#2955D9] text-xs rounded-[8px]">
+                                        <span className="text-white">1</span>
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        2
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        3
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationEllipsis className="text-xs" />
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        8
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        9
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        10
+                                    </PaginationLink>
+                                </PaginationItem>
+                            </div>
+                            <PaginationItem>
+                                <PaginationNext href="#" />
+                            </PaginationItem>
                         </PaginationContent>
                     </Pagination>
-
-                    <PaginationNext className="text-gray-700 hover:bg-gray-200 p-2 rounded">
-                        Próximo
-                        <ChevronRight size={18} className="ml-2" />
-                    </PaginationNext>
                 </div>
             </div>
 
@@ -228,19 +256,19 @@ export default function TabelaDePrecos() {
                                 <div>
                                     <div className="grid grid-cols-2 gap-4 mt-4">
                                         <div>
-                                            <p>Especialidade <span className="text-[red]">*</span></p>
+                                            <p className="text-[14px] mb-2">Especialidade <span className="text-[red]">*</span></p>
                                             <Input placeholder="Digite aqui" />
                                         </div>
                                         <div>
-                                            <p>Valor ofertado do serviço<span className="text-[red]">*</span></p>
+                                            <p className="text-[14px] mb-2">Valor ofertado do serviço<span className="text-[red]">*</span></p>
                                             <Input placeholder="Digite aqui" />
                                         </div>
                                         <div>
-                                            <p>Valor de repasse para o médico<span className="text-[red]">*</span></p>
+                                            <p className="text-[14px] mb-2">Valor de repasse para o médico<span className="text-[red]">*</span></p>
                                             <Input placeholder="Digite aqui" />
                                         </div>
                                         <div>
-                                            <p>Valor a ser recebido pela clínica<span className="text-[red]">*</span></p>
+                                            <p className="text-[14px] mb-2">Valor a ser recebido pela clínica<span className="text-[red]">*</span></p>
                                             <Input placeholder="Digite aqui" />
                                         </div>
                                     </div>
@@ -255,19 +283,19 @@ export default function TabelaDePrecos() {
                                 <div>
                                     <div className="grid grid-cols-2 gap-4 mt-4">
                                         <div>
-                                            <p>Exame <span className="text-[red]">*</span></p>
+                                            <p className="text-[14px] mb-2">Exame <span className="text-[red]">*</span></p>
                                             <Input placeholder="Digite aqui" />
                                         </div>
                                         <div>
-                                            <p>Valor ofertado do serviço<span className="text-[red]">*</span></p>
+                                            <p className="text-[14px] mb-2">Valor ofertado do serviço<span className="text-[red]">*</span></p>
                                             <Input placeholder="Digite aqui" />
                                         </div>
                                         <div>
-                                            <p>Valor de repasse para o médico<span className="text-[red]">*</span></p>
+                                            <p className="text-[14px] mb-2">Valor de repasse para o médico<span className="text-[red]">*</span></p>
                                             <Input placeholder="Digite aqui" />
                                         </div>
                                         <div>
-                                            <p>Valor a ser recebido pela clínica<span className="text-[red]">*</span></p>
+                                            <p className="text-[14px] mb-2">Valor a ser recebido pela clínica<span className="text-[red]">*</span></p>
                                             <Input placeholder="Digite aqui" />
                                         </div>
                                     </div>
@@ -282,19 +310,19 @@ export default function TabelaDePrecos() {
                                 <div>
                                     <div className="grid grid-cols-2 gap-4 mt-4">
                                         <div>
-                                            <p>Procedimento <span className="text-[red]">*</span></p>
+                                            <p className="text-[14px] mb-2">Procedimento <span className="text-[red]">*</span></p>
                                             <Input placeholder="Digite aqui" />
                                         </div>
                                         <div>
-                                            <p>Valor ofertado do serviço<span className="text-[red]">*</span></p>
+                                            <p className="text-[14px] mb-2">Valor ofertado do serviço<span className="text-[red]">*</span></p>
                                             <Input placeholder="Digite aqui" />
                                         </div>
                                         <div>
-                                            <p>Valor de repasse para o médico<span className="text-[red]">*</span></p>
+                                            <p className="text-[14px] mb-2">Valor de repasse para o médico<span className="text-[red]">*</span></p>
                                             <Input placeholder="Digite aqui" />
                                         </div>
                                         <div>
-                                            <p>Valor a ser recebido pela clínica<span className="text-[red]">*</span></p>
+                                            <p className="text-[14px] mb-2">Valor a ser recebido pela clínica<span className="text-[red]">*</span></p>
                                             <Input placeholder="Digite aqui" />
                                         </div>
                                     </div>

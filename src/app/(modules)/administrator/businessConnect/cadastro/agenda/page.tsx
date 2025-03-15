@@ -8,11 +8,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { ChevronLeft, ChevronRight, Edit, Search, Trash } from "lucide-react";
+import { ChevronLeft, ChevronRight, Search } from "lucide-react";
 import React from "react";
 import { useState } from "react";
+import { FiTrash2 } from "react-icons/fi";
+import { HiOutlinePencil } from "react-icons/hi2";
 
-const medicos = Array(5).fill({
+const profissionais = Array(5).fill({
     name: 'Dra. Claúdia Fernandez',
     avatar: '/icone-perfil.jpg'
 });
@@ -46,20 +48,12 @@ export default function TabelaDePrecos() {
     const [search, setSearch] = useState('');
     const [isModalCreateOpen, setIsModalCreateOpen] = useState(false);
     const [isModalEditOpen, setIsModalEditOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState("medicos");
-    const [selectedCategory, setSelectedCategory] = useState<'medicos' | 'equipamentos' | 'procedimentos'>('medicos');
+    const [selectedCategory, setSelectedCategory] = useState<'profissionais' | 'equipamentos' | 'procedimentos'>('profissionais');
 
-    const data = selectedCategory === 'medicos' ? medicos
+    const data = selectedCategory === 'profissionais' ? profissionais
         : selectedCategory === 'equipamentos' ? equipamentos
-            : procedimentos;
+        : procedimentos;
 
-    const handleNextStep = () => {
-        if (selectedOption === "medicos") {
-            setSelectedOption("equipamentos");
-        } else if (selectedOption === "equipamentos") {
-            setSelectedOption("procedimentos");
-        }
-    };
 
     return (
         <div className="mx-auto min-h-screen p-4 bg-[#FAFAFA] flex flex-col">
@@ -84,18 +78,18 @@ export default function TabelaDePrecos() {
 
             <div className="gap-1 py-4">
                 <Button
-                    className={`mr-2 ${selectedCategory === 'medicos'
-                        ? 'bg-[#DEEAFF] text-[#2955D9]'
-                        : 'bg-white text-black border border-gray-300 hover:bg-[#DEEAFF] hover:text-[#2955D9]'
+                    className={`mr-2 ${selectedCategory === 'profissionais'
+                        ? 'bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]'
+                        : 'bg-white text-black border border-gray-300 hover:bg-[#ECF2FF] hover:text-[#2955D9]'
                         }`}
-                    onClick={() => setSelectedCategory('medicos')}
+                    onClick={() => setSelectedCategory('profissionais')}
                 >
                     Profissional
                 </Button>
                 <Button
                     className={`mr-2 ${selectedCategory === 'equipamentos'
-                        ? 'bg-[#DEEAFF] text-[#2955D9]'
-                        : 'bg-white text-black border border-gray-300 hover:bg-[#DEEAFF] hover:text-[#2955D9]'
+                        ? 'bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]'
+                        : 'bg-white text-black border border-gray-300 hover:bg-[#ECF2FF] hover:text-[#2955D9]'
                         }`}
                     onClick={() => setSelectedCategory('equipamentos')}
                 >
@@ -103,8 +97,8 @@ export default function TabelaDePrecos() {
                 </Button>
                 <Button
                     className={`${selectedCategory === 'procedimentos'
-                        ? 'bg-[#DEEAFF] text-[#2955D9]'
-                        : 'bg-white text-black border border-gray-300 hover:bg-[#DEEAFF] hover:text-[#2955D9]'
+                        ? 'bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]'
+                        : 'bg-white text-black border border-gray-300 hover:bg-[#ECF2FF] hover:text-[#2955D9]'
                         }`}
                     onClick={() => setSelectedCategory('procedimentos')}
                 >
@@ -117,19 +111,19 @@ export default function TabelaDePrecos() {
                     <Card key={index} className="border-b mb-4">
                         <CardContent className="flex items-center justify-between p-4 gap-4">
                             <div className="flex items-center gap-4">
-                                {selectedCategory === "medicos" && (
+                                {selectedCategory === "profissionais" && (
                                     <img src={object.avatar} alt="avatar" className="w-12 h-12 rounded-full" />
                                 )}
                                 <p className="font-semibold">{object.name}</p>
                             </div>
                             <div className="gap-4">
                                 <Button variant="ghost" onClick={() => setIsModalEditOpen(true)}>
-                                    <Edit />
+                                    <HiOutlinePencil />
                                 </Button>
                                 <AlertDialog>
                                     <AlertDialogTrigger asChild>
                                         <Button variant="ghost">
-                                            <Trash />
+                                            <FiTrash2 />
                                         </Button>
                                     </AlertDialogTrigger>
                                     <AlertDialogContent>
@@ -186,110 +180,25 @@ export default function TabelaDePrecos() {
             <Dialog open={isModalCreateOpen} onOpenChange={setIsModalCreateOpen}>
                 <DialogOverlay className="fixed inset-0 bg-black/50" />
                 <DialogContent className="fixed bg-white p-6 rounded-lg shadow-lg top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[90vh] overflow-y-auto">
-                    <DialogTitle className="text-lg font-semibold mb-4">Cadastro de Serviço</DialogTitle>
+                    <DialogTitle className="text-lg font-semibold mb-4">Cadastro de Disponibilidade</DialogTitle>
 
                     <div>
                         <RadioGroup
-                            value={selectedCategory}
-                            onValueChange={setSelectedOption}
                             className="flex space-x-4"
                         >
                             <div className="flex items-center space-x-2">
-                                <RadioGroupItem value="medicos" id="medicos" />
-                                <Label htmlFor="medicos">Consulta</Label>
+                                <RadioGroupItem value="profissionais" id="profissionais" />
+                                <Label htmlFor="profissionais">Profissional</Label>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <RadioGroupItem value="equipamentos" id="equipamentos" />
-                                <Label htmlFor="equipamentos">Exame</Label>
+                                <Label htmlFor="equipamentos">Equipamento</Label>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <RadioGroupItem value="procedimentos" id="procedimentos" />
-                                <Label htmlFor="procedimentos">Procedimento</Label>
+                                <Label htmlFor="procedimentos">Procedimentos</Label>
                             </div>
                         </RadioGroup>
-
-                        <div className="mt-4 rounded-lg">
-                            {selectedOption === "medicos" && (
-                                <div>
-                                    <div className="grid grid-cols-2 gap-4 mt-4">
-                                        <div>
-                                            <p>Especialidade <span className="text-[red]">*</span></p>
-                                            <Input placeholder="Digite aqui" />
-                                        </div>
-                                        <div>
-                                            <p>Valor ofertado do serviço<span className="text-[red]">*</span></p>
-                                            <Input placeholder="Digite aqui" />
-                                        </div>
-                                        <div>
-                                            <p>Valor de repasse para o médico<span className="text-[red]">*</span></p>
-                                            <Input placeholder="Digite aqui" />
-                                        </div>
-                                        <div>
-                                            <p>Valor a ser recebido pela clínica<span className="text-[red]">*</span></p>
-                                            <Input placeholder="Digite aqui" />
-                                        </div>
-                                    </div>
-                                    <div className="flex items-center justify-end mt-6">
-                                        <Button variant="ghost" onClick={() => setIsModalCreateOpen(false)}>Cancelar</Button>
-                                        <Button >Confirmar Cadastro</Button>
-                                    </div>
-                                </div>
-                            )}
-
-                            {selectedOption === "equipamentos" && (
-                                <div>
-                                    <div className="grid grid-cols-2 gap-4 mt-4">
-                                        <div>
-                                            <p>Exame <span className="text-[red]">*</span></p>
-                                            <Input placeholder="Digite aqui" />
-                                        </div>
-                                        <div>
-                                            <p>Valor ofertado do serviço<span className="text-[red]">*</span></p>
-                                            <Input placeholder="Digite aqui" />
-                                        </div>
-                                        <div>
-                                            <p>Valor de repasse para o médico<span className="text-[red]">*</span></p>
-                                            <Input placeholder="Digite aqui" />
-                                        </div>
-                                        <div>
-                                            <p>Valor a ser recebido pela clínica<span className="text-[red]">*</span></p>
-                                            <Input placeholder="Digite aqui" />
-                                        </div>
-                                    </div>
-                                    <div className="flex items-center justify-end mt-6">
-                                        <Button variant="ghost" onClick={() => setIsModalCreateOpen(false)}>Cancelar</Button>
-                                        <Button >Confirmar Cadastro</Button>
-                                    </div>
-                                </div>
-                            )}
-
-                            {selectedOption === "procedimentos" && (
-                                <div>
-                                    <div className="grid grid-cols-2 gap-4 mt-4">
-                                        <div>
-                                            <p>Procedimento <span className="text-[red]">*</span></p>
-                                            <Input placeholder="Digite aqui" />
-                                        </div>
-                                        <div>
-                                            <p>Valor ofertado do serviço<span className="text-[red]">*</span></p>
-                                            <Input placeholder="Digite aqui" />
-                                        </div>
-                                        <div>
-                                            <p>Valor de repasse para o médico<span className="text-[red]">*</span></p>
-                                            <Input placeholder="Digite aqui" />
-                                        </div>
-                                        <div>
-                                            <p>Valor a ser recebido pela clínica<span className="text-[red]">*</span></p>
-                                            <Input placeholder="Digite aqui" />
-                                        </div>
-                                    </div>
-                                    <div className="flex items-center justify-end mt-6">
-                                        <Button variant="ghost" onClick={() => setIsModalCreateOpen(false)}>Cancelar</Button>
-                                        <Button>Confirmar Cadastro</Button>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
                     </div>
 
                 </DialogContent>
@@ -299,36 +208,7 @@ export default function TabelaDePrecos() {
                 <DialogOverlay className="fixed inset-0 bg-black/50" />
                 <DialogContent className="fixed bg-white p-6 rounded-lg shadow-lg top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[90vh] overflow-y-auto">
                     <DialogTitle className="text-lg font-semibold mb-4">Edição de Cadastro</DialogTitle>
-
-                    <div>
-                        <div className="mt-4 rounded-lg">
-                            <div>
-                                <div className="grid grid-cols-2 gap-4 mt-4">
-                                    <div>
-                                        <p>Especialidade <span className="text-[red]">*</span></p>
-                                        <Input placeholder="Digite aqui" />
-                                    </div>
-                                    <div>
-                                        <p>Valor ofertado do serviço<span className="text-[red]">*</span></p>
-                                        <Input placeholder="Digite aqui" />
-                                    </div>
-                                    <div>
-                                        <p>Valor de repasse para o médico<span className="text-[red]">*</span></p>
-                                        <Input placeholder="Digite aqui" />
-                                    </div>
-                                    <div>
-                                        <p>Valor a ser recebido pela clínica<span className="text-[red]">*</span></p>
-                                        <Input placeholder="Digite aqui" />
-                                    </div>
-                                </div>
-                                <div className="flex items-center justify-end mt-6">
-                                    <Button variant="ghost" onClick={() => setIsModalCreateOpen(false)}>Cancelar</Button>
-                                    <Button onClick={handleNextStep}>Confirmar Cadastro</Button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    {/* Aqui deve ser adicionado os componentes da edição */}
                 </DialogContent>
             </Dialog>
 

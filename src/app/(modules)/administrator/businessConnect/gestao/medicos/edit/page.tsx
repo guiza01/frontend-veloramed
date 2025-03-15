@@ -5,10 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Disclosure } from "@headlessui/react";
 import { Dialog, DialogOverlay, DialogContent, DialogTitle } from "@radix-ui/react-dialog";
-import { ArrowLeft, Eye, EyeOff, ClipboardCopy, Check, Upload, Trash } from "lucide-react";
+import { ArrowLeft, Eye, EyeOff, ClipboardCopy, Check, Upload } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FiTrash2 } from "react-icons/fi";
 
 interface Doctor {
     index: number;
@@ -153,7 +154,7 @@ export default function MedicsEdit() {
             <div className="bg-[#FFFFFF] flex flex-wrap w-full mt-6 p-4">
                 <button
                     onClick={() => toggleMenu('convenio')}
-                    className={`flex items-center justify-between w-full text-xl font-semibold ${openMenus.convenio ? 'border-b pb-2 border-[#666870]' : ''}`}
+                    className={`flex items-center justify-between w-full text-xl font-semibold ${openMenus.convenio ? 'border-b pb-2 border-gray-300' : ''}`}
                 >
                     <span className="text-[#666870] text-[16px]">Convenio</span>
                     {openMenus.convenio ? (
@@ -196,7 +197,7 @@ export default function MedicsEdit() {
             <div className="bg-[#FFFFFF] flex flex-wrap w-full mt-6 p-4">
                 <button
                     onClick={() => toggleMenu('procedimentos')}
-                    className={`flex items-center justify-between w-full text-xl font-semibold ${openMenus.procedimentos ? 'border-b pb-2 border-[#666870]' : ''}`}
+                    className={`flex items-center justify-between w-full text-xl font-semibold ${openMenus.procedimentos ? 'border-b pb-2 border-gray-300' : ''}`}
                 >
                     <span className="text-[#666870] text-[16px]">Procedimentos</span>
                     {openMenus.procedimentos ? (
@@ -258,7 +259,7 @@ export default function MedicsEdit() {
                 <AlertDialog>
                     <AlertDialogTrigger asChild>
                         <Button variant="ghost">
-                            <Trash />
+                            <FiTrash2 />
                         </Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>

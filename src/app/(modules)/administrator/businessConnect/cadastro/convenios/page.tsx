@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogOverlay, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { Search, Filter, ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useState } from "react";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
@@ -138,36 +138,52 @@ export default function ConveriosList() {
                     ))}
                 </div>
 
-                <div className="bg-white shadow flex justify-between items-center p-4">
-                    <PaginationPrevious className="text-gray-700 hover:bg-gray-200 p-2 rounded">
-                        <ChevronLeft size={18} className="mr-2" />
-                        Anterior
-                    </PaginationPrevious>
-
-                    <Pagination className="flex space-x-2">
-                        <PaginationContent>
-                            {[1, 2, '...', 9, 10].map((num, idx) => (
-                                <React.Fragment key={idx}>
-                                    {num === '...' ? (
-                                        <PaginationEllipsis />
-                                    ) : (
-                                        <PaginationItem
-                                            isActive={num === 1}
-                                            className={`px-3 py-1 rounded-full text-center cursor-pointer ${num === 1 ? 'bg-blue-500 text-white' : 'text-gray-700 hover:bg-gray-100'
-                                                }`}
-                                        >
-                                            {num}
-                                        </PaginationItem>
-                                    )}
-                                </React.Fragment>
-                            ))}
+                <div className="overflow-x-auto mt-auto">
+                    <Pagination className="w-full mt-4">
+                        <PaginationContent className="flex w-full justify-between bg-white rounded-md py-2">
+                            <PaginationItem>
+                                <PaginationPrevious href="#" />
+                            </PaginationItem>
+                            <div className="flex">
+                                <PaginationItem>
+                                    <PaginationLink href="#" isActive className="bg-[#2955D9] text-xs rounded-[8px]">
+                                        <span className="text-white">1</span>
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        2
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        3
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationEllipsis className="text-xs" />
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        8
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        9
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        10
+                                    </PaginationLink>
+                                </PaginationItem>
+                            </div>
+                            <PaginationItem>
+                                <PaginationNext href="#" />
+                            </PaginationItem>
                         </PaginationContent>
                     </Pagination>
-
-                    <PaginationNext className="text-gray-700 hover:bg-gray-200 p-2 rounded">
-                        Próximo
-                        <ChevronRight size={18} className="ml-2" />
-                    </PaginationNext>
                 </div>
             </div>
 
@@ -197,8 +213,8 @@ export default function ConveriosList() {
                                 onClick={() => setSelectedType("Consulta")}
                                 variant={selectedType === "Consulta" ? "default" : "outline"}
                                 className={`${selectedType === "Consulta"
-                                        ? "bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]"
-                                        : "hover:bg-[#ECF2FF] hover:text-[#2955D9]"
+                                    ? "bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]"
+                                    : "hover:bg-[#ECF2FF] hover:text-[#2955D9]"
                                     }`}
                             >
                                 Consulta
@@ -207,8 +223,8 @@ export default function ConveriosList() {
                                 onClick={() => setSelectedType("Exame")}
                                 variant={selectedType === "Exame" ? "default" : "outline"}
                                 className={`${selectedType === "Exame"
-                                        ? "bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]"
-                                        : "hover:bg-[#ECF2FF] hover:text-[#2955D9]"
+                                    ? "bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]"
+                                    : "hover:bg-[#ECF2FF] hover:text-[#2955D9]"
                                     }`}
                             >
                                 Exame
@@ -217,8 +233,8 @@ export default function ConveriosList() {
                                 onClick={() => setSelectedType("Procedimento")}
                                 variant={selectedType === "Procedimento" ? "default" : "outline"}
                                 className={`${selectedType === "Procedimento"
-                                        ? "bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]"
-                                        : "hover:bg-[#ECF2FF] hover:text-[#2955D9]"
+                                    ? "bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]"
+                                    : "hover:bg-[#ECF2FF] hover:text-[#2955D9]"
                                     }`}
                             >
                                 Procedimento

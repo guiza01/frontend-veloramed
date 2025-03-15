@@ -7,9 +7,11 @@ import { Input } from "@/components/ui/input";
 import { Check, ChevronLeft, ChevronRight, Edit, Eye, EyeOff, Filter, Search, Trash, Upload } from "lucide-react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { Dialog, DialogContent, DialogOverlay, DialogTitle } from "@/components/ui/dialog";
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import React from "react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import { HiOutlinePencil } from "react-icons/hi2";
+import { FiTrash2 } from "react-icons/fi";
 
 const attendants = Array(3).fill({
     name: 'Ana Julia Moraes ',
@@ -121,13 +123,13 @@ export default function AtendentesList() {
                                             className="text-[#1E1E1E] hover:text-blue-700"
                                             onClick={() => setIsModalEditOpen(true)}
                                         >
-                                            <Edit size={20} />
+                                            <HiOutlinePencil size={20} />
                                         </button>
 
                                         <AlertDialog>
                                             <AlertDialogTrigger asChild>
                                                 <Button variant="ghost">
-                                                    <Trash />
+                                                    <FiTrash2 />
                                                 </Button>
                                             </AlertDialogTrigger>
                                             <AlertDialogContent>
@@ -150,36 +152,52 @@ export default function AtendentesList() {
                     ))}
                 </div>
 
-                <div className="bg-white shadow flex justify-between items-center p-4">
-                    <PaginationPrevious className="text-gray-700 hover:bg-gray-200 p-2 rounded">
-                        <ChevronLeft size={18} className="mr-2" />
-                        Anterior
-                    </PaginationPrevious>
-
-                    <Pagination className="flex space-x-2">
-                        <PaginationContent>
-                            {[1, 2, '...', 9, 10].map((num, idx) => (
-                                <React.Fragment key={idx}>
-                                    {num === '...' ? (
-                                        <PaginationEllipsis />
-                                    ) : (
-                                        <PaginationItem
-                                            isActive={num === 1}
-                                            className={`px-3 py-1 rounded-full text-center cursor-pointer ${num === 1 ? 'bg-blue-500 text-white' : 'text-gray-700 hover:bg-gray-100'
-                                                }`}
-                                        >
-                                            {num}
-                                        </PaginationItem>
-                                    )}
-                                </React.Fragment>
-                            ))}
+                <div className="overflow-x-auto mt-auto">
+                    <Pagination className="w-full mt-4">
+                        <PaginationContent className="flex w-full justify-between bg-white rounded-md py-2">
+                            <PaginationItem>
+                                <PaginationPrevious href="#" />
+                            </PaginationItem>
+                            <div className="flex">
+                                <PaginationItem>
+                                    <PaginationLink href="#" isActive className="bg-[#2955D9] text-xs rounded-[8px]">
+                                        <span className="text-white">1</span>
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        2
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        3
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationEllipsis className="text-xs" />
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        8
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        9
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        10
+                                    </PaginationLink>
+                                </PaginationItem>
+                            </div>
+                            <PaginationItem>
+                                <PaginationNext href="#" />
+                            </PaginationItem>
                         </PaginationContent>
                     </Pagination>
-
-                    <PaginationNext className="text-gray-700 hover:bg-gray-200 p-2 rounded">
-                        Próximo
-                        <ChevronRight size={18} className="ml-2" />
-                    </PaginationNext>
                 </div>
             </div>
 
