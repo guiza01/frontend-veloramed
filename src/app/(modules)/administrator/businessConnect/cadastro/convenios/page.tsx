@@ -193,9 +193,36 @@ export default function ConveriosList() {
                         </div>
 
                         <div className="flex gap-4 mb-4">
-                            <Button onClick={() => setSelectedType("Consulta")} variant={selectedType === "Consulta" ? "default" : "outline"}>Consulta</Button>
-                            <Button onClick={() => setSelectedType("Exame")} variant={selectedType === "Exame" ? "default" : "outline"}>Exame</Button>
-                            <Button onClick={() => setSelectedType("Procedimento")} variant={selectedType === "Procedimento" ? "default" : "outline"}>Procedimento</Button>
+                            <Button
+                                onClick={() => setSelectedType("Consulta")}
+                                variant={selectedType === "Consulta" ? "default" : "outline"}
+                                className={`${selectedType === "Consulta"
+                                        ? "bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]"
+                                        : "hover:bg-[#ECF2FF] hover:text-[#2955D9]"
+                                    }`}
+                            >
+                                Consulta
+                            </Button>
+                            <Button
+                                onClick={() => setSelectedType("Exame")}
+                                variant={selectedType === "Exame" ? "default" : "outline"}
+                                className={`${selectedType === "Exame"
+                                        ? "bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]"
+                                        : "hover:bg-[#ECF2FF] hover:text-[#2955D9]"
+                                    }`}
+                            >
+                                Exame
+                            </Button>
+                            <Button
+                                onClick={() => setSelectedType("Procedimento")}
+                                variant={selectedType === "Procedimento" ? "default" : "outline"}
+                                className={`${selectedType === "Procedimento"
+                                        ? "bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]"
+                                        : "hover:bg-[#ECF2FF] hover:text-[#2955D9]"
+                                    }`}
+                            >
+                                Procedimento
+                            </Button>
                         </div>
 
                         {selectedType === "Consulta" && (
