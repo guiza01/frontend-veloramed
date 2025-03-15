@@ -62,7 +62,7 @@ export default function TabelaDePrecos() {
     };
 
     return (
-        <div className="mx-auto min-h-screen p-4 bg-[#FAFAFA]">
+        <div className="mx-auto min-h-screen p-4 bg-[#FAFAFA] flex flex-col">
             <div className="flex justify-between py-4">
                 <h1 className="text-xl flex items-center font-bold">Cadastro de Tabela de Valores</h1>
                 <div className="flex items-center gap-4">
@@ -112,7 +112,7 @@ export default function TabelaDePrecos() {
                 </Button>
             </div>
 
-            <div className="bg-[#FAFAFA] rounded-lg">
+            <div className="bg-[#FAFAFA] rounded-lg flex-grow">
                 {data.map((object, index) => (
                     <Card key={index} className="border-b mb-4">
                         <CardContent className="flex items-center justify-between p-4 gap-4">
@@ -151,7 +151,7 @@ export default function TabelaDePrecos() {
                 ))}
             </div>
 
-            <div className="bg-[#FFFFFF] shadow flex justify-between items-center p-4 mt-4">
+            <div className="bg-[#FFFFFF] shadow flex justify-between items-center p-4 mt-auto">
                 <PaginationPrevious className="text-gray-700 hover:bg-gray-200 p-2 rounded">
                     <ChevronLeft size={18} className="mr-2" />
                     Anterior

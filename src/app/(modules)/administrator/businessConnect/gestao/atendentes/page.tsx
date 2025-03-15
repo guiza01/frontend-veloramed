@@ -56,9 +56,9 @@ export default function AtendentesList() {
     };
 
     return (
-        <div className="mx-auto min-h-screen p-4 bg-[#FAFAFA]">
+        <div className="mx-auto min-h-screen p-4 bg-[#FAFAFA] flex flex-col">
             <div className="flex justify-between py-4">
-                <h1 className="text-xl flex items-center font-bold">Gestão de Médicos</h1>
+                <h1 className="text-xl flex items-center font-bold">Gestão de Atendentes</h1>
                 <div className="flex items-center gap-4">
                     <div className="relative w-full">
                         <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
@@ -79,21 +79,21 @@ export default function AtendentesList() {
                 </div>
             </div>
 
-            <div className="bg-[#FAFAFA] rounded-lg">
-                {attendants.map((attendat, index) => {
-                    return (
+            <div className="flex flex-col flex-grow">
+                <div className="flex-grow bg-[#FAFAFA] rounded-lg overflow-y-auto">
+                    {attendants.map((attendant, index) => (
                         <Card key={index} className="border-b mb-4">
                             <CardContent className="flex items-center justify-between p-4 gap-4">
                                 <div className="flex items-center gap-4">
                                     <img
-                                        src={attendat.avatar}
+                                        src={attendant.avatar}
                                         alt="Avatar"
                                         className="w-12 h-12 rounded-full"
                                     />
-                                    <p className="font-semibold">{attendat.name}</p>
+                                    <p className="font-semibold">{attendant.name}</p>
                                 </div>
-                                <p className="text-sm text-gray-500">{attendat.email}</p>
-                                <p className="text-sm text-gray-500">{attendat.recepcao}</p>
+                                <p className="text-sm text-gray-500">{attendant.email}</p>
+                                <p className="text-sm text-gray-500">{attendant.recepcao}</p>
                                 <button onClick={toggleDetails} className="text-blue-500">
                                     {isOpen ? <FaChevronUp className="text-gray-500" /> : <FaChevronDown className="text-gray-500" />}
                                 </button>
@@ -101,11 +101,11 @@ export default function AtendentesList() {
                             {isOpen && (
                                 <div className="flex items-center justify-between p-4">
                                     <div className="flex items-center gap-4 text-gray-600">
-                                        <label className="text-[14px] font-semibold">
-                                            Senha
-                                        </label>
+                                        <label className="text-[14px] font-semibold">Senha</label>
                                         <div className="flex items-center">
-                                            <span className="mr-2 text-[14px] text-gray-500">{showPassword ? attendat.password : '●●●●●●●●'}</span>
+                                            <span className="mr-2 text-[14px] text-gray-500">
+                                                {showPassword ? attendant.password : '●●●●●●●●'}
+                                            </span>
                                             <button
                                                 type="button"
                                                 className="text-gray-500"
@@ -147,40 +147,40 @@ export default function AtendentesList() {
                                 </div>
                             )}
                         </Card>
-                    );
-                })}
-            </div>
+                    ))}
+                </div>
 
-            <div className="bg-[#FFFFFF] shadow flex justify-between items-center p-4 mt-4">
-                <PaginationPrevious className="text-gray-700 hover:bg-gray-200 p-2 rounded">
-                    <ChevronLeft size={18} className="mr-2" />
-                    Anterior
-                </PaginationPrevious>
+                <div className="bg-white shadow flex justify-between items-center p-4">
+                    <PaginationPrevious className="text-gray-700 hover:bg-gray-200 p-2 rounded">
+                        <ChevronLeft size={18} className="mr-2" />
+                        Anterior
+                    </PaginationPrevious>
 
-                <Pagination className="flex space-x-2">
-                    <PaginationContent>
-                        {[1, 2, '...', 9, 10].map((num, idx) => (
-                            <React.Fragment key={idx}>
-                                {num === '...' ? (
-                                    <PaginationEllipsis />
-                                ) : (
-                                    <PaginationItem
-                                        isActive={num === 1}
-                                        className={`px-3 py-1 rounded-full text-center cursor-pointer ${num === 1 ? 'bg-blue-500 text-white' : 'text-gray-700 hover:bg-gray-100'
-                                            }`}
-                                    >
-                                        {num}
-                                    </PaginationItem>
-                                )}
-                            </React.Fragment>
-                        ))}
-                    </PaginationContent>
-                </Pagination>
+                    <Pagination className="flex space-x-2">
+                        <PaginationContent>
+                            {[1, 2, '...', 9, 10].map((num, idx) => (
+                                <React.Fragment key={idx}>
+                                    {num === '...' ? (
+                                        <PaginationEllipsis />
+                                    ) : (
+                                        <PaginationItem
+                                            isActive={num === 1}
+                                            className={`px-3 py-1 rounded-full text-center cursor-pointer ${num === 1 ? 'bg-blue-500 text-white' : 'text-gray-700 hover:bg-gray-100'
+                                                }`}
+                                        >
+                                            {num}
+                                        </PaginationItem>
+                                    )}
+                                </React.Fragment>
+                            ))}
+                        </PaginationContent>
+                    </Pagination>
 
-                <PaginationNext className="text-gray-700 hover:bg-gray-200 p-2 rounded">
-                    Próximo
-                    <ChevronRight size={18} className="ml-2" />
-                </PaginationNext>
+                    <PaginationNext className="text-gray-700 hover:bg-gray-200 p-2 rounded">
+                        Próximo
+                        <ChevronRight size={18} className="ml-2" />
+                    </PaginationNext>
+                </div>
             </div>
 
             <Dialog open={isModalCreateOpen} onOpenChange={setIsModalCreateOpen}>

@@ -59,7 +59,7 @@ export default function MedicosList() {
     };
 
     return (
-        <div className="mx-auto min-h-screen p-4 bg-[#FAFAFA]">
+        <div className="mx-auto min-h-screen p-4 bg-[#FAFAFA] flex flex-col">
             <div className="flex justify-between py-4">
                 <h1 className="text-xl flex items-center font-bold">Gestão de Médicos</h1>
                 <div className="flex items-center gap-4">
@@ -82,51 +82,55 @@ export default function MedicosList() {
                 </div>
             </div>
 
-            <div className="bg-[#FAFAFA] rounded-lg">
-                {doctors.map((doctor, index) => (
-                    <Card key={index} className="border-b mb-4">
-                        <CardContent className="flex items-center p-4 gap-4">
-                            <img src={doctor.avatar} alt="Avatar" className="w-12 h-12 rounded-full" />
-                            <div className="flex-1">
-                                <p className="font-semibold">{doctor.name}</p>
-                                <p className="text-sm text-gray-500">{doctor.specialty} • {doctor.plan} • {doctor.room}</p>
-                            </div>
-                            <Button variant="outline" onClick={() => router.push(`/administrator/businessConnect/gestao/medicos/edit`)}>Detalhes</Button>
-                        </CardContent>
-                    </Card>
-                ))}
-            </div>
+            <div className="flex flex-col flex-grow">
+                <div className="flex-grow bg-[#FAFAFA] rounded-lg overflow-y-auto">
+                    {doctors.map((doctor, index) => (
+                        <Card key={index} className="border-b mb-4">
+                            <CardContent className="flex items-center p-4 gap-4">
+                                <img src={doctor.avatar} alt="Avatar" className="w-12 h-12 rounded-full" />
+                                <div className="flex-1">
+                                    <p className="font-semibold">{doctor.name}</p>
+                                    <p className="text-sm text-gray-500">{doctor.specialty} • {doctor.plan} • {doctor.room}</p>
+                                </div>
+                                <Button variant="outline" onClick={() => router.push(`/administrator/businessConnect/gestao/medicos/edit`)}>
+                                    Detalhes
+                                </Button>
+                            </CardContent>
+                        </Card>
+                    ))}
+                </div>
 
-            <div className="bg-[#FFFFFF] shadow flex justify-between items-center p-4 mt-4">
-                <PaginationPrevious className="text-gray-700 hover:bg-gray-200 p-2 rounded">
-                    <ChevronLeft size={18} className="mr-2" />
-                    Anterior
-                </PaginationPrevious>
+                <div className="bg-white shadow flex justify-between items-center p-4">
+                    <PaginationPrevious className="text-gray-700 hover:bg-gray-200 p-2 rounded flex items-center">
+                        <ChevronLeft size={18} className="mr-2" />
+                        Anterior
+                    </PaginationPrevious>
 
-                <Pagination className="flex space-x-2">
-                    <PaginationContent>
-                        {[1, 2, '...', 9, 10].map((num, idx) => (
-                            <React.Fragment key={idx}>
-                                {num === '...' ? (
-                                    <PaginationEllipsis />
-                                ) : (
-                                    <PaginationItem
-                                        isActive={num === 1} 
-                                        className={`px-3 py-1 rounded-full text-center cursor-pointer ${num === 1 ? 'bg-blue-500 text-white' : 'text-gray-700 hover:bg-gray-100'
-                                            }`}
-                                    >
-                                        {num}
-                                    </PaginationItem>
-                                )}
-                            </React.Fragment>
-                        ))}
-                    </PaginationContent>
-                </Pagination>
+                    <Pagination className="flex space-x-2">
+                        <PaginationContent>
+                            {[1, 2, '...', 9, 10].map((num, idx) => (
+                                <React.Fragment key={idx}>
+                                    {num === '...' ? (
+                                        <PaginationEllipsis />
+                                    ) : (
+                                        <PaginationItem
+                                            isActive={num === 1}
+                                            className={`px-3 py-1 rounded-full text-center cursor-pointer transition ${num === 1 ? 'bg-blue-500 text-white' : 'text-gray-700 hover:bg-gray-100'
+                                                }`}
+                                        >
+                                            {num}
+                                        </PaginationItem>
+                                    )}
+                                </React.Fragment>
+                            ))}
+                        </PaginationContent>
+                    </Pagination>
 
-                <PaginationNext className="text-gray-700 hover:bg-gray-200 p-2 rounded">
-                    Próximo
-                    <ChevronRight size={18} className="ml-2" />
-                </PaginationNext>
+                    <PaginationNext className="text-gray-700 hover:bg-gray-200 p-2 rounded flex items-center">
+                        Próximo
+                        <ChevronRight size={18} className="ml-2" />
+                    </PaginationNext>
+                </div>
             </div>
 
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>

@@ -64,7 +64,7 @@ export default function TabelaDePrecos() {
     };
 
     return (
-        <div className="mx-auto min-h-screen p-4 bg-[#FAFAFA]">
+        <div className="mx-auto min-h-screen p-4 bg-[#FAFAFA] flex flex-col">
             <div className="flex justify-between py-4">
                 <h1 className="text-xl flex items-center font-bold">Cadastro de Tabela de Valores</h1>
                 <div className="flex items-center gap-4">
@@ -114,86 +114,88 @@ export default function TabelaDePrecos() {
                 </Button>
             </div>
 
-            <div className="bg-[#FAFAFA] rounded-lg">
-                {data.map((service, index) => (
-                    <Card key={index} className="border-b mb-4">
-                        <CardContent className="flex items-center justify-between p-4 gap-4">
-                            <div className="flex flex-col">
-                                <p className="font-semibold mb-4">{service.name}</p>
-                                <div className="flex gap-4">
+            <div className="flex flex-col flex-grow">
+                <div className="flex-grow bg-[#FAFAFA] rounded-lg overflow-y-auto">
+                    {data.map((service, index) => (
+                        <Card key={index} className="border-b mb-4">
+                            <CardContent className="flex items-center justify-between p-4 gap-4">
+                                <div className="flex flex-col">
+                                    <p className="font-semibold mb-4">{service.name}</p>
                                     <div className="flex gap-4">
-                                        <p className="text-sm text-black">{service.valueOferted}</p>
-                                        <p className="text-sm text-gray-500">Valor ofertado</p>
-                                    </div>
-                                    <div className="flex gap-4">
-                                        <p className="text-sm text-black">{service.valueMedic}</p>
-                                        <p className="text-sm text-gray-500">Valor de repasse para o médico</p>
-                                    </div>
-                                    <div className="flex gap-4">
-                                        <p className="text-sm text-black">{service.valueClinic}</p>
-                                        <p className="text-sm text-gray-500">Valor a ser recebido pela clínica</p>
+                                        <div className="flex gap-4">
+                                            <p className="text-sm text-black">{service.valueOferted}</p>
+                                            <p className="text-sm text-gray-500">Valor ofertado</p>
+                                        </div>
+                                        <div className="flex gap-4">
+                                            <p className="text-sm text-black">{service.valueMedic}</p>
+                                            <p className="text-sm text-gray-500">Valor de repasse para o médico</p>
+                                        </div>
+                                        <div className="flex gap-4">
+                                            <p className="text-sm text-black">{service.valueClinic}</p>
+                                            <p className="text-sm text-gray-500">Valor a ser recebido pela clínica</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="gap-4">
-                                <Button variant="ghost" onClick={() => setIsModalEditOpen(true)}>
-                                    <Edit />
-                                </Button>
-                                <AlertDialog>
-                                    <AlertDialogTrigger asChild>
-                                        <Button variant="ghost">
-                                            <Trash />
-                                        </Button>
-                                    </AlertDialogTrigger>
-                                    <AlertDialogContent>
-                                        <AlertDialogHeader>
-                                            <AlertDialogTitle>Tem certeza?</AlertDialogTitle>
-                                            <AlertDialogDescription>
-                                                Esta ação não pode ser desfeita. Isso excluirá permanentemente o item.
-                                            </AlertDialogDescription>
-                                        </AlertDialogHeader>
-                                        <AlertDialogFooter>
-                                            <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                                            <AlertDialogAction>Excluir</AlertDialogAction>
-                                        </AlertDialogFooter>
-                                    </AlertDialogContent>
-                                </AlertDialog>
-                            </div>
-                        </CardContent>
-                    </Card>
-                ))}
-            </div>
+                                <div className="gap-4">
+                                    <Button variant="ghost" onClick={() => setIsModalEditOpen(true)}>
+                                        <Edit />
+                                    </Button>
+                                    <AlertDialog>
+                                        <AlertDialogTrigger asChild>
+                                            <Button variant="ghost">
+                                                <Trash />
+                                            </Button>
+                                        </AlertDialogTrigger>
+                                        <AlertDialogContent>
+                                            <AlertDialogHeader>
+                                                <AlertDialogTitle>Tem certeza?</AlertDialogTitle>
+                                                <AlertDialogDescription>
+                                                    Esta ação não pode ser desfeita. Isso excluirá permanentemente o item.
+                                                </AlertDialogDescription>
+                                            </AlertDialogHeader>
+                                            <AlertDialogFooter>
+                                                <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                                                <AlertDialogAction>Excluir</AlertDialogAction>
+                                            </AlertDialogFooter>
+                                        </AlertDialogContent>
+                                    </AlertDialog>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    ))}
+                </div>
 
-            <div className="bg-[#FFFFFF] shadow flex justify-between items-center p-4 mt-4">
-                <PaginationPrevious className="text-gray-700 hover:bg-gray-200 p-2 rounded">
-                    <ChevronLeft size={18} className="mr-2" />
-                    Anterior
-                </PaginationPrevious>
+                <div className="bg-[#FFFFFF] shadow flex justify-between items-center p-4 mt-4">
+                    <PaginationPrevious className="text-gray-700 hover:bg-gray-200 p-2 rounded">
+                        <ChevronLeft size={18} className="mr-2" />
+                        Anterior
+                    </PaginationPrevious>
 
-                <Pagination className="flex space-x-2">
-                    <PaginationContent>
-                        {[1, 2, '...', 9, 10].map((num, idx) => (
-                            <React.Fragment key={idx}>
-                                {num === '...' ? (
-                                    <PaginationEllipsis />
-                                ) : (
-                                    <PaginationItem
-                                        isActive={num === 1}
-                                        className={`px-3 py-1 rounded-full text-center cursor-pointer ${num === 1 ? 'bg-blue-500 text-white' : 'text-gray-700 hover:bg-gray-100'
-                                            }`}
-                                    >
-                                        {num}
-                                    </PaginationItem>
-                                )}
-                            </React.Fragment>
-                        ))}
-                    </PaginationContent>
-                </Pagination>
+                    <Pagination className="flex space-x-2">
+                        <PaginationContent>
+                            {[1, 2, '...', 9, 10].map((num, idx) => (
+                                <React.Fragment key={idx}>
+                                    {num === '...' ? (
+                                        <PaginationEllipsis />
+                                    ) : (
+                                        <PaginationItem
+                                            isActive={num === 1}
+                                            className={`px-3 py-1 rounded-full text-center cursor-pointer ${num === 1 ? 'bg-blue-500 text-white' : 'text-gray-700 hover:bg-gray-100'
+                                                }`}
+                                        >
+                                            {num}
+                                        </PaginationItem>
+                                    )}
+                                </React.Fragment>
+                            ))}
+                        </PaginationContent>
+                    </Pagination>
 
-                <PaginationNext className="text-gray-700 hover:bg-gray-200 p-2 rounded">
-                    Próximo
-                    <ChevronRight size={18} className="ml-2" />
-                </PaginationNext>
+                    <PaginationNext className="text-gray-700 hover:bg-gray-200 p-2 rounded">
+                        Próximo
+                        <ChevronRight size={18} className="ml-2" />
+                    </PaginationNext>
+                </div>
             </div>
 
             <Dialog open={isModalCreateOpen} onOpenChange={setIsModalCreateOpen}>
