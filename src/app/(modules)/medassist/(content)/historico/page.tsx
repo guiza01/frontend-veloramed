@@ -58,12 +58,12 @@ export default function HistoricoPaciente() {
             <div className="bg-[#FAFAFA] rounded-lg flex-grow">
                 {patients.map((patient, index) => (
                     <Card key={index} className="border-b mb-4">
-                        <CardContent className="flex items-center p-4 gap-4">
+                        <CardContent className="flex items-center p-4 gap-4" onClick={() => setIsModalOpen(true)}>
                             <div className="flex-1">
                                 <p className="font-semibold">{patient.name}</p>
                                 <p className="text-sm mt-2 text-gray-500">Ultima consulta: {patient.lastConsult} | {patient.convenio}</p>
                             </div>
-                            <Button variant="outline" onClick={() => setIsModalOpen(true)}>Detalhes</Button>
+                            <Button variant="outline">Detalhes</Button>
                         </CardContent>
                     </Card>
                 ))}
@@ -110,36 +110,36 @@ export default function HistoricoPaciente() {
                     >
                         <DialogTitle className="text-lg font-semibold mb-4">Detalhes do agendamento</DialogTitle>
                         <div className=" gap-4">
-                            <div>
+                            <div className="mb-4">
                                 <h1 className="text-[#4D5056] text-[16px]">Nome</h1>
-                                <h1 className="mt-2 text-[20px]">{patient.name}</h1>
+                                <h1 className="mt-1 text-[18px]">{patient.name}</h1>
                             </div>
-                            <div>
+                            <div className="mb-4">
                                 <h1 className="text-[#4D5056]">E-mail</h1>
-                                <h1 className="mt-2 text-[20px]">{patient.email}</h1>
+                                <h1 className="mt-2 text-[18px]">{patient.email}</h1>
                             </div>
-                            <div className="flex items-center mt-4 grid grid-cols-3">
+                            <div className="flex items-center mt-4 mb-4 grid grid-cols-3">
                                 <div>
                                     <h1 className="text-[#4D5056]">CPF</h1>
-                                    <h1 className="mt-2 text-[20px]">{patient.cpf}</h1>
+                                    <h1 className="mt-2 text-[18px]">{patient.cpf}</h1>
                                 </div>
                                 <div>
                                     <h1 className="text-[#4D5056]">Data de nascimento</h1>
-                                    <h1 className="mt-2 text-[20px]">{patient.date}</h1>
+                                    <h1 className="mt-2 text-[18px]">{patient.date}</h1>
                                 </div>
                                 <div>
                                     <h1 className="text-[#4D5056]">Telefone</h1>
-                                    <h1 className="mt-2 text-[20px]">{patient.number}</h1>
+                                    <h1 className="mt-2 text-[18px]">{patient.number}</h1>
                                 </div>
                             </div>
-                            <div className="flex items-center mt-4  grid grid-cols-3">
+                            <div className="flex items-center mt-4 grid grid-cols-3">
                                 <div className="">
                                     <h1 className="text-[#4D5056]">Convênio</h1>
-                                    <h1 className="mt-2 text-[20px]">{patient.convenio}</h1>
+                                    <h1 className="mt-2 text-[18px]">{patient.convenio}</h1>
                                 </div>
                                 <div className="">
                                     <h1 className="text-[#4D5056]">Última consulta</h1>
-                                    <h1 className="mt-2 text-[20px]">{patient.lastConsult}</h1>
+                                    <h1 className="mt-2 text-[18px]">{patient.lastConsult}</h1>
                                 </div>
                             </div>
                         </div>
