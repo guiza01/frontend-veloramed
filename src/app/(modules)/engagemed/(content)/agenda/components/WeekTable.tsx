@@ -173,7 +173,7 @@ const WeekTable: React.FC = () => {
             {selectedOption === "consulta" && (
               <div className="mt-4 space-y-4">
                 <div>
-                  <Label>Tipo de Consulta <span className="text-[red]">*</span></Label>
+                  <h1 className="mb-2 mt-8 text-[14px]">Tipo de Consulta <span className="text-[red]">*</span></h1>
                   <Select value={consultaType} onValueChange={setConsultaType}>
                     <SelectTrigger>
                       <SelectValue placeholder="Selecione o tipo de consulta" />
@@ -185,7 +185,7 @@ const WeekTable: React.FC = () => {
                   </Select>
                 </div>
                 <div>
-                  <Label>Tipo de Atendimento <span className="text-[red]">*</span></Label>
+                  <h1 className="mb-2 text-[14px]">Tipo de Atendimento <span className="text-[red]">*</span></h1>
                   <Select value={atendimentoType} onValueChange={setAtendimentoType}>
                     <SelectTrigger>
                       <SelectValue placeholder="Selecione o tipo de atendimento" />
@@ -197,7 +197,7 @@ const WeekTable: React.FC = () => {
                   </Select>
                 </div>
                 <div>
-                  <Label>Nome do Paciente <span className="text-[red]">*</span></Label>
+                  <h1 className="mb-2 text-[14px]">Nome do Paciente<span className="text-[red]">*</span></h1>
                   <div className="flex items-center gap-3">
                     <input
                       type="text"
@@ -246,15 +246,9 @@ const WeekTable: React.FC = () => {
             )}
 
             {selectedOption === "exame" && (
-              <div>
-                {/* Adicionar logica para exame aqui */}
-              </div>
-            )}
-
-            {selectedOption === "procedimento" && (
               <div className="mt-4 space-y-4">
                 <div>
-                  <Label>Tipo de Consulta <span className="text-[red]">*</span></Label>
+                  <h1 className="mb-2 mt-8 text-[14px]">Tipo de Consulta <span className="text-[red]">*</span></h1>
                   <Select value={consultaType} onValueChange={setConsultaType}>
                     <SelectTrigger>
                       <SelectValue placeholder="Selecione o tipo de consulta" />
@@ -266,7 +260,7 @@ const WeekTable: React.FC = () => {
                   </Select>
                 </div>
                 <div>
-                  <Label>Tipo de Atendimento <span className="text-[red]">*</span></Label>
+                  <h1 className="mb-2 text-[14px]">Tipo de Atendimento <span className="text-[red]">*</span></h1>
                   <Select value={atendimentoType} onValueChange={setAtendimentoType}>
                     <SelectTrigger>
                       <SelectValue placeholder="Selecione o tipo de atendimento" />
@@ -278,7 +272,82 @@ const WeekTable: React.FC = () => {
                   </Select>
                 </div>
                 <div>
-                  <Label>Nome do Paciente <span className="text-[red]">*</span></Label>
+                  <h1 className="mb-2 text-[14px]">Nome do Paciente<span className="text-[red]">*</span></h1>
+                  <div className="flex items-center gap-3">
+                    <input
+                      type="text"
+                      className="w-full border rounded-md p-2"
+                      placeholder="Digite o nome do paciente"
+                      value={patientName}
+                      onChange={(e) => setPatientName(e.target.value)}
+                    />
+                    <Button onClick={handleSearch}>
+                      <IoIosSearch />
+                    </Button>
+                  </div>
+
+                  {searchResults.length === 0 && patientName && (
+                    <p className="text-red-500 mt-2">Não foram encontrados pacientes com esse nome.</p>
+                  )}
+
+                  {searchResults.length > 0 && (
+                    <div className="mt-4 border p-3 rounded-md">
+                      {searchResults.map((patient) => (
+                        <div key={patient.id} className="flex items-center justify-between py-2">
+                          <span>{patient.name}</span>
+                          <input
+                            type="radio"
+                            name="selectedPatient"
+                            value={patient.id}
+                            checked={selectedPatient === patient.id}
+                            onChange={() => setSelectedPatient(patient.id)}
+                          />
+                        </div>
+                      ))}
+                      <div className="flex items-center inline-block">
+                        <p>Não encontrou o paciente?</p>
+                        <Button className="font-bold" variant={'ghost'} onClick={() => {
+                          setIsModalCreateConsultaOpen(true);
+                          setIsModalCreateOpen(false);
+                        }}
+                        >
+                          Clique aqui para cadastrar.
+                        </Button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {selectedOption === "procedimento" && (
+              <div className="mt-4 space-y-4">
+                <div>
+                  <h1 className="mb-2 mt-8 text-[14px]">Tipo de Consulta <span className="text-[red]">*</span></h1>
+                  <Select value={consultaType} onValueChange={setConsultaType}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecione o tipo de consulta" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="geral">Consulta Geral</SelectItem>
+                      <SelectItem value="especialista">Consulta com Especialista</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <h1 className="mb-2 text-[14px]">Tipo de Atendimento <span className="text-[red]">*</span></h1>
+                  <Select value={atendimentoType} onValueChange={setAtendimentoType}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecione o tipo de atendimento" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="presencial">Presencial</SelectItem>
+                      <SelectItem value="online">Online</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <h1 className="mb-2 text-[14px]">Nome do Paciente<span className="text-[red]">*</span></h1>
                   <div className="flex items-center gap-3">
                     <input
                       type="text"
