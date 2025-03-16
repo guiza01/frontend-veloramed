@@ -47,8 +47,8 @@ export default function HistoricoPaciente() {
                 <div className="gap-1">
                     <Button
                         className={`mr-2 ${selectedCategory === 'anamnese'
-                            ? 'bg-[#DEEAFF] text-[#2955D9]'
-                            : 'bg-white text-black border border-gray-300 hover:bg-[#DEEAFF] hover:text-[#2955D9]'
+                            ? 'bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]'
+                            : 'bg-white text-black border border-gray-300 hover:bg-[#ECF2FF] hover:text-[#2955D9]'
                             }`}
                         onClick={() => setSelectedCategory('anamnese')}
                     >
@@ -56,8 +56,8 @@ export default function HistoricoPaciente() {
                     </Button>
                     <Button
                         className={`mr-2 ${selectedCategory === 'prescricoes'
-                            ? 'bg-[#DEEAFF] text-[#2955D9]'
-                            : 'bg-white text-black border border-gray-300 hover:bg-[#DEEAFF] hover:text-[#2955D9]'
+                            ? 'bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]'
+                            : 'bg-white text-black border border-gray-300 hover:bg-[#ECF2FF] hover:text-[#2955D9]'
                             }`}
                         onClick={() => setSelectedCategory('prescricoes')}
                     >
@@ -65,14 +65,15 @@ export default function HistoricoPaciente() {
                     </Button>
                     <Button
                         className={`${selectedCategory === 'solicitacoes'
-                            ? 'bg-[#DEEAFF] text-[#2955D9]'
-                            : 'bg-white text-black border border-gray-300 hover:bg-[#DEEAFF] hover:text-[#2955D9]'
+                            ? 'bg-[#ECF2FF] text-[#2955D9] hover:bg-[#D6E4FF]'
+                            : 'bg-white text-black border border-gray-300 hover:bg-[#ECF2FF] hover:text-[#2955D9]'
                             }`}
                         onClick={() => setSelectedCategory('solicitacoes')}
                     >
                         Solicitações de exame
                     </Button>
                 </div>
+
                 <div className="flex items-center gap-4">
                     <div className="relative w-full">
                         <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
@@ -186,7 +187,7 @@ export default function HistoricoPaciente() {
                             </RadioGroup>
                         </div>
                         <div className="mt-10">
-                            <h1 className="text-[14px]">Descrição do modelo <span className="text-[red]">*</span></h1>
+                            <h1 className="text-[14px] mb-2">Descrição do modelo <span className="text-[red]">*</span></h1>
                             <Textarea placeholder="Escreva aqui a descrição do serviço." />
                         </div>
                     </div>
