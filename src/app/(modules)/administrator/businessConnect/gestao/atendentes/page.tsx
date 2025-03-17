@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Check, ChevronLeft, ChevronRight, Edit, Eye, EyeOff, Filter, Search, Trash, Upload } from "lucide-react";
+import { Check, Eye, EyeOff, Filter, Search, Upload } from "lucide-react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { Dialog, DialogContent, DialogOverlay, DialogTitle } from "@/components/ui/dialog";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";

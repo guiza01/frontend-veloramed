@@ -13,7 +13,6 @@ import {
     Legend,
     ArcElement,
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
 import { MdMoneyOff } from "react-icons/md";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -31,33 +30,6 @@ ChartJS.register(
     Legend,
     ArcElement
 );
-
-const barData = {
-    labels: ["Janeiro", "Fevereiro", "Março"],
-    datasets: [
-        {
-            label: "Consultas",
-            data: [25000, 9000, 15000],
-            backgroundColor: "#93c5fd",
-            borderWidth: 1,
-            barThickness: 50,
-        },
-        {
-            label: "Procedimentos",
-            data: [18000, 5000, 12000],
-            backgroundColor: "#60a5fa",
-            borderWidth: 1,
-            barThickness: 50,
-        },
-        {
-            label: "Exames",
-            data: [9000, 3000, 25000],
-            backgroundColor: "#2563eb",
-            borderWidth: 1,
-            barThickness: 50,
-        },
-    ],
-};
 
 const totalBillingData = [
     { name: "Particular", value: 20, color: "#2563eb" },

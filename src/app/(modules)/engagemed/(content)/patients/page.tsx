@@ -81,11 +81,12 @@ export default function PatientsPage() {
       </div>
 
       {mockPatients.map((patient, index) => (
-        <div key={index} className="mt-4 p-4 bg-white rounded-xl flex justify-between items-center">
+        <div key={index} className="mt-4 p-4 bg-white rounded-xl flex justify-between items-center"
+          onClick={() => router.push("/engagemed/patients/details")}>
           <div className="flex flex-col">
             <span>{patient.name}</span>
             <div className="flex flex-col items-start md:items-center md:justify-start md:flex-row md:divide-x w-full text-xs text-[#666870]">
-              <span className="text-center px-2">{patient.agreement}</span>
+              <span className="text-center">{patient.agreement}</span>
               <span className="text-center px-2">{patient.phone}</span>
               <span className="text-center px-2">{patient.email}</span>
             </div>

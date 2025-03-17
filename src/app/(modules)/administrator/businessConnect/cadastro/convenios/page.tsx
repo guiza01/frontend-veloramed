@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogOverlay, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
-import { Search, Filter, ChevronLeft, ChevronRight } from "lucide-react";
+import { Search, Filter } from "lucide-react";
 import React, { useState } from "react";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { FaPlus } from "react-icons/fa";

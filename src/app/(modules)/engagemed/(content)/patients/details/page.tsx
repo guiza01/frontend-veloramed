@@ -32,38 +32,38 @@ export default function CreatePatient() {
                     <div className="flex items-center grid grid-cols-2 gap-4 mb-6">
                         <div>
                             <span className='text-[16px]'>Nome completo </span>
-                            <p className='text-[20px]'>{patient.name}</p>
+                            <p className='text-[18px]'>{patient.name}</p>
                         </div>
                         <div>
                             <span className='text-[16px]'>CPF </span>
-                            <p className='text-[20px]'>{patient.cpf}</p>
+                            <p className='text-[18px]'>{patient.cpf}</p>
                         </div>
                     </div>
                     <div className="flex items-center grid grid-cols-2 gap-4 mb-6">
                         <div>
                             <span className='text-[16px]'>Telefone </span>
-                            <p className='text-[20px]'>{patient.number}</p>
+                            <p className='text-[18px]'>{patient.number}</p>
                         </div>
                         <div>
                             <span className='text-[16px]'>E-mail </span>
-                            <p className='text-[20px]'>{patient.email}</p>
+                            <p className='text-[18px]'>{patient.email}</p>
                         </div>
                     </div>
 
                     <div className="flex grid grid-cols-2 gap-4 mb-6">
                         <div>
                             <span className='text-[16px]'>Convênio </span>
-                            <p className='text-[20px]'>{patient.convenio}</p>
+                            <p className='text-[18px]'>{patient.convenio}</p>
                         </div>
                         <div>
                             <span className='text-[16px]'>Data de nascimento </span>
-                            <p className='text-[20px]'>{patient.date}</p>
+                            <p className='text-[18px]'>{patient.date}</p>
                         </div>
                     </div>
 
                     <div className="mb-6">
                         <span className='text-[16px]'>Observações</span>
-                        <p className='text-[20px]'>{patient.observer}</p>
+                        <p className='text-[18px]'>{patient.observer}</p>
                     </div>
 
                 </div>

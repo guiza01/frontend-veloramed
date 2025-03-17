@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogOverlay, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowLeft, BriefcaseMedical, Trash } from "lucide-react";
+import { ArrowLeft, BriefcaseMedical } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp, FaPlus } from "react-icons/fa";

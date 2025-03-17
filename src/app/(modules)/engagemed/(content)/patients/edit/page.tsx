@@ -34,27 +34,27 @@ export default function CreatePatient() {
                     <div className="flex items-center grid grid-cols-2 gap-4">
                         <div>
                             <span className='text-[14px]'>Nome completo <span className='text-[red]'>*</span></span>
-                            <Input placeholder="Nome completo" defaultValue={patient.name} className="mb-6" />
+                            <Input placeholder="Nome completo" defaultValue={patient.name} className="mb-6 mt-2" />
                         </div>
                         <div>
                             <span className='text-[14px]'>CPF <span className='text-[red]'>*</span></span>
-                            <Input placeholder="Digite aqui" defaultValue={patient.cpf} className="mb-6" />
+                            <Input placeholder="Digite aqui" defaultValue={patient.cpf} className="mb-6 mt-2" />
                         </div>
                     </div>
                     <div className="flex items-center grid grid-cols-2 gap-4">
                         <div>
                             <span className='text-[14px]'>Telefone <span className='text-[red]'>*</span></span>
-                            <Input placeholder="Nome completo" defaultValue={patient.number} className="mb-6" />
+                            <Input placeholder="Nome completo" defaultValue={patient.number} className="mb-6 mt-2" />
                         </div>
                         <div>
                             <span className='text-[14px]'>E-mail <span className='text-[red]'>*</span></span>
-                            <Input placeholder="Digite aqui" defaultValue={patient.email} className="mb-6" />
+                            <Input placeholder="Digite aqui" defaultValue={patient.email} className="mb-6 mt-2" />
                         </div>
                     </div>
 
                     <div className="flex grid grid-cols-2 gap-4 ">
                         <div>
-                            <span className='text-[14px]'>Convênio <span className='text-[red]'>*</span></span>
+                            <span className='text-[14px] mb-2 block'>Convênio <span className='text-[red]'>*</span></span>
                             <Select value={atendimentoType} onValueChange={setAtendimentoType}>
                                 <SelectTrigger>
                                     <SelectValue placeholder="Selecione o tipo de atendimento" />
@@ -69,7 +69,7 @@ export default function CreatePatient() {
                         </div>
                         <div>
                             <span className='text-[14px]'>Data de nascimento <span className='text-[red]'>*</span></span>
-                            <Input type="date" placeholder="Digite aqui" defaultValue={patient.date} className="mb-6" />
+                            <Input type="date" placeholder="Digite aqui" defaultValue={patient.date} className="mb-6 mt-2" />
                         </div>
                     </div>
 
@@ -77,7 +77,7 @@ export default function CreatePatient() {
                         <span className='text-[14px]'>Observações</span>
                         <textarea
                             placeholder="Digite aqui"
-                            className="mb-6 w-full p-3 border border-gray-300 rounded-lg resize-none"
+                            className="mb-6 mt-2 w-full p-3 border border-gray-300 rounded-lg resize-none"
                             defaultValue={patient.observer}
                         />
                     </div>
