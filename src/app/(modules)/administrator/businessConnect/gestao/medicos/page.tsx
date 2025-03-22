@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
-import { Search, Filter, ChevronLeft, ChevronRight, Upload, Check, EyeOff, Eye } from 'lucide-react';
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
+import { Search, Filter, Upload, Check, EyeOff, Eye } from 'lucide-react';
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
 import { Dialog, DialogTitle, DialogContent, DialogOverlay } from '@radix-ui/react-dialog';
 import { Disclosure } from '@headlessui/react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
@@ -103,36 +103,52 @@ export default function MedicosList() {
                     ))}
                 </div>
 
-                <div className="bg-white shadow flex justify-between items-center p-4">
-                    <PaginationPrevious className="text-gray-700 hover:bg-gray-200 p-2 rounded flex items-center">
-                        <ChevronLeft size={18} className="mr-2" />
-                        Anterior
-                    </PaginationPrevious>
-
-                    <Pagination className="flex space-x-2">
-                        <PaginationContent>
-                            {[1, 2, '...', 9, 10].map((num, idx) => (
-                                <React.Fragment key={idx}>
-                                    {num === '...' ? (
-                                        <PaginationEllipsis />
-                                    ) : (
-                                        <PaginationItem
-                                            isActive={num === 1}
-                                            className={`px-3 py-1 rounded-full text-center cursor-pointer transition ${num === 1 ? 'bg-blue-500 text-white' : 'text-gray-700 hover:bg-gray-100'
-                                                }`}
-                                        >
-                                            {num}
-                                        </PaginationItem>
-                                    )}
-                                </React.Fragment>
-                            ))}
+                <div className="overflow-x-auto mt-auto">
+                    <Pagination className="w-full mt-4">
+                        <PaginationContent className="flex w-full justify-between bg-white rounded-md py-2">
+                            <PaginationItem>
+                                <PaginationPrevious href="#" />
+                            </PaginationItem>
+                            <div className="flex">
+                                <PaginationItem>
+                                    <PaginationLink href="#" isActive className="bg-[#2955D9] text-xs rounded-[8px]">
+                                        <span className="text-white">1</span>
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        2
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        3
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationEllipsis className="text-xs" />
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        8
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        9
+                                    </PaginationLink>
+                                </PaginationItem>
+                                <PaginationItem>
+                                    <PaginationLink className="text-xs" href="#">
+                                        10
+                                    </PaginationLink>
+                                </PaginationItem>
+                            </div>
+                            <PaginationItem>
+                                <PaginationNext href="#" />
+                            </PaginationItem>
                         </PaginationContent>
                     </Pagination>
-
-                    <PaginationNext className="text-gray-700 hover:bg-gray-200 p-2 rounded flex items-center">
-                        Próximo
-                        <ChevronRight size={18} className="ml-2" />
-                    </PaginationNext>
                 </div>
             </div>
 

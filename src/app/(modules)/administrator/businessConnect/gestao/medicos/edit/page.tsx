@@ -210,46 +210,46 @@ export default function MedicsEdit() {
                 {openMenus.procedimentos && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full mt-4">
                         <div className="flex flex-col items-start border rounded gap-4">
-                            <div className="flex items-center justify-between w-full p-4">
+                            <div className="flex items-center justify-between w-full px-4 mt-4">
                                 <h1 className="text-[#1E1E1E] font-semibold">Drenagem linfática</h1>
                                 <h1>R$380.00</h1>
                             </div>
-                            <p className="p-4 text-[14px] text-[#1E1E1E]">Técnica de massagem capaz de estimular o sistema linfático a trabalhar de modo acelerado. A função principal desse procedimento é agilizar o processo de retirada dos resíduos e líquidos metabólicos que ficam acumulados entre as células.</p>
+                            <p className="px-4 text-[14px] text-[#1E1E1E]">Técnica de massagem capaz de estimular o sistema linfático a trabalhar de modo acelerado. A função principal desse procedimento é agilizar o processo de retirada dos resíduos e líquidos metabólicos que ficam acumulados entre as células.</p>
                         </div>
                         <div className="flex flex-col items-start border rounded gap-4">
-                            <div className="flex items-center justify-between w-full p-4">
+                            <div className="flex items-center justify-between w-full px-4 mt-4">
                                 <h1 className="text-[#1E1E1E] font-semibold">Drenagem linfática</h1>
                                 <h1>R$380.00</h1>
                             </div>
-                            <p className="p-4 text-[14px] text-[#1E1E1E]">Técnica de massagem capaz de estimular o sistema linfático a trabalhar de modo acelerado. A função principal desse procedimento é agilizar o processo de retirada dos resíduos e líquidos metabólicos que ficam acumulados entre as células.</p>
+                            <p className="px-4 text-[14px] text-[#1E1E1E]">Técnica de massagem capaz de estimular o sistema linfático a trabalhar de modo acelerado. A função principal desse procedimento é agilizar o processo de retirada dos resíduos e líquidos metabólicos que ficam acumulados entre as células.</p>
                         </div>
                         <div className="flex flex-col items-start border rounded gap-4">
-                            <div className="flex items-center justify-between w-full p-4">
+                            <div className="flex items-center justify-between w-full px-4 mt-4">
                                 <h1 className="text-[#1E1E1E] font-semibold">Drenagem linfática</h1>
                                 <h1>R$380.00</h1>
                             </div>
-                            <p className="p-4 text-[14px] text-[#1E1E1E]">Técnica de massagem capaz de estimular o sistema linfático a trabalhar de modo acelerado. A função principal desse procedimento é agilizar o processo de retirada dos resíduos e líquidos metabólicos que ficam acumulados entre as células.</p>
+                            <p className="px-4 text-[14px] text-[#1E1E1E]">Técnica de massagem capaz de estimular o sistema linfático a trabalhar de modo acelerado. A função principal desse procedimento é agilizar o processo de retirada dos resíduos e líquidos metabólicos que ficam acumulados entre as células.</p>
                         </div>
                         <div className="flex flex-col items-start border rounded gap-4">
-                            <div className="flex items-center justify-between w-full p-4">
+                            <div className="flex items-center justify-between w-full px-4 mt-4">
                                 <h1 className="text-[#1E1E1E] font-semibold">Drenagem linfática</h1>
                                 <h1>R$380.00</h1>
                             </div>
-                            <p className="p-4 text-[14px] text-[#1E1E1E]">Técnica de massagem capaz de estimular o sistema linfático a trabalhar de modo acelerado. A função principal desse procedimento é agilizar o processo de retirada dos resíduos e líquidos metabólicos que ficam acumulados entre as células.</p>
+                            <p className="px-4 text-[14px] text-[#1E1E1E]">Técnica de massagem capaz de estimular o sistema linfático a trabalhar de modo acelerado. A função principal desse procedimento é agilizar o processo de retirada dos resíduos e líquidos metabólicos que ficam acumulados entre as células.</p>
                         </div>
                         <div className="flex flex-col items-start border rounded gap-4">
-                            <div className="flex items-center justify-between w-full p-4">
+                            <div className="flex items-center justify-between w-full px-4 mt-4">
                                 <h1 className="text-[#1E1E1E] font-semibold">Drenagem linfática</h1>
                                 <h1>R$380.00</h1>
                             </div>
-                            <p className="p-4 text-[14px] text-[#1E1E1E]">Técnica de massagem capaz de estimular o sistema linfático a trabalhar de modo acelerado. A função principal desse procedimento é agilizar o processo de retirada dos resíduos e líquidos metabólicos que ficam acumulados entre as células.</p>
+                            <p className="px-4 text-[14px] text-[#1E1E1E]">Técnica de massagem capaz de estimular o sistema linfático a trabalhar de modo acelerado. A função principal desse procedimento é agilizar o processo de retirada dos resíduos e líquidos metabólicos que ficam acumulados entre as células.</p>
                         </div>
                         <div className="flex flex-col items-start border rounded gap-4">
-                            <div className="flex items-center justify-between w-full p-4">
+                            <div className="flex items-center justify-between w-full px-4 mt-4">
                                 <h1 className="text-[#1E1E1E] font-semibold">Drenagem linfática</h1>
                                 <h1>R$380.00</h1>
                             </div>
-                            <p className="p-4 text-[14px] text-[#1E1E1E]">Técnica de massagem capaz de estimular o sistema linfático a trabalhar de modo acelerado. A função principal desse procedimento é agilizar o processo de retirada dos resíduos e líquidos metabólicos que ficam acumulados entre as células.</p>
+                            <p className="px-4 text-[14px] text-[#1E1E1E]">Técnica de massagem capaz de estimular o sistema linfático a trabalhar de modo acelerado. A função principal desse procedimento é agilizar o processo de retirada dos resíduos e líquidos metabólicos que ficam acumulados entre as células.</p>
                         </div>
                     </div>
                 )}

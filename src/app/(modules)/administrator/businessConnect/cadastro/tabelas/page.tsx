@@ -1,15 +1,15 @@
 "use client";
 
-import { 
-    AlertDialog, 
-    AlertDialogAction, 
-    AlertDialogCancel, 
-    AlertDialogContent, 
-    AlertDialogDescription, 
-    AlertDialogFooter, 
-    AlertDialogHeader, 
-    AlertDialogTitle, 
-    AlertDialogTrigger 
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -237,17 +237,41 @@ export default function TabelaDePrecos() {
                             onValueChange={setSelectedOption}
                             className="flex space-x-4"
                         >
-                            <div className="flex items-center space-x-2">
-                                <RadioGroupItem value="option-one" id="option-one" />
-                                <Label htmlFor="option-one">Consulta</Label>
+                            <div
+                                className={`flex items-center space-x-2 ${selectedOption === "option-one" ? "p-2 rounded bg-[#ECF2FF]" : ""}`}
+                            >
+                                <RadioGroupItem
+                                    value="option-one"
+                                    id="option-one"
+                                    className={`peer ${selectedOption === "option-one" ? "text-[#2955D9]" : ""}`}
+                                />
+                                <Label htmlFor="option-one" className={`${selectedOption === "option-one" ? "text-[#2955D9]" : ""}`}>
+                                    Consulta
+                                </Label>
                             </div>
-                            <div className="flex items-center space-x-2">
-                                <RadioGroupItem value="option-two" id="option-two" />
-                                <Label htmlFor="option-two">Exame</Label>
+                            <div
+                                className={`flex items-center space-x-2 ${selectedOption === "option-two" ? "p-2 rounded bg-[#ECF2FF]" : ""}`}
+                            >
+                                <RadioGroupItem
+                                    value="option-two"
+                                    id="option-two"
+                                    className={`peer ${selectedOption === "option-two" ? "text-[#2955D9]" : ""}`}
+                                />
+                                <Label htmlFor="option-two" className={`${selectedOption === "option-two" ? "text-[#2955D9]" : ""}`}>
+                                    Exame
+                                </Label>
                             </div>
-                            <div className="flex items-center space-x-2">
-                                <RadioGroupItem value="option-three" id="option-three" />
-                                <Label htmlFor="option-three">Procedimento</Label>
+                            <div
+                                className={`flex items-center space-x-2 ${selectedOption === "option-three" ? "p-2 rounded bg-[#ECF2FF]" : ""}`}
+                            >
+                                <RadioGroupItem
+                                    value="option-three"
+                                    id="option-three"
+                                    className={`peer ${selectedOption === "option-three" ? "text-[#2955D9]" : ""}`}
+                                />
+                                <Label htmlFor="option-three" className={`${selectedOption === "option-three" ? "text-[#2955D9]" : ""}`}>
+                                    Procedimento
+                                </Label>
                             </div>
                         </RadioGroup>
 
@@ -348,19 +372,19 @@ export default function TabelaDePrecos() {
                             <div>
                                 <div className="grid grid-cols-2 gap-4 mt-4">
                                     <div>
-                                        <p>Especialidade <span className="text-[red]">*</span></p>
+                                        <p className="text-[14px]">Especialidade <span className="text-[red]">*</span></p>
                                         <Input placeholder="Digite aqui" />
                                     </div>
                                     <div>
-                                        <p>Valor ofertado do serviço<span className="text-[red]">*</span></p>
+                                        <p className="text-[14px]">Valor ofertado do serviço<span className="text-[red]">*</span></p>
                                         <Input placeholder="Digite aqui" />
                                     </div>
                                     <div>
-                                        <p>Valor de repasse para o médico<span className="text-[red]">*</span></p>
+                                        <p className="text-[14px]">Valor de repasse para o médico<span className="text-[red]">*</span></p>
                                         <Input placeholder="Digite aqui" />
                                     </div>
                                     <div>
-                                        <p>Valor a ser recebido pela clínica<span className="text-[red]">*</span></p>
+                                        <p className="text-[14px]">Valor a ser recebido pela clínica<span className="text-[red]">*</span></p>
                                         <Input placeholder="Digite aqui" />
                                     </div>
                                 </div>

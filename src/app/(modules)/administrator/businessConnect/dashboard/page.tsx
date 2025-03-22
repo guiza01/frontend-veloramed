@@ -1,7 +1,7 @@
 "use client";
 
 import { FaRegSquareCheck } from "react-icons/fa6";
-import { FaHandHoldingHeart } from "react-icons/fa6";
+import { RiHandHeartLine } from "react-icons/ri";
 import { GoChecklist } from "react-icons/go";
 import { CgCloseR } from "react-icons/cg";
 import { FaArrowTrendUp } from "react-icons/fa6";
@@ -128,7 +128,7 @@ export default function Integration() {
       <section className="grid grid-cols-4 gap-4">
         {[
           {
-            icon: <FaRegSquareCheck className="text-blue-500 text-2xl" />,
+            icon: <FaRegSquareCheck className="text-[#27B9F2] text-2xl" />,
             label: "Atendimentos realizados",
             value: "1.300",
             trend: "+20%",
@@ -136,7 +136,7 @@ export default function Integration() {
             trendColor: "text-green-500",
           },
           {
-            icon: <FaHandHoldingHeart className="text-blue-500 text-2xl" />,
+            icon: <RiHandHeartLine className="text-[#27B9F2] text-2xl" />,
             label: "Atendimentos por convênio",
             value: "400",
             trend: "+20%",
@@ -144,7 +144,7 @@ export default function Integration() {
             trendColor: "text-green-500",
           },
           {
-            icon: <GoChecklist className="text-blue-500 text-2xl" />,
+            icon: <GoChecklist className="text-[#27B9F2] text-2xl" />,
             label: "Atendimentos particulares",
             value: "900",
             trend: "+20%",
@@ -152,7 +152,7 @@ export default function Integration() {
             trendColor: "text-green-500",
           },
           {
-            icon: <CgCloseR className="text-blue-500 text-2xl" />,
+            icon: <CgCloseR className="text-[#27B9F2] text-2xl" />,
             label: "Faltas",
             value: "10%",
             trend: "+20%",
@@ -162,7 +162,7 @@ export default function Integration() {
         ].map((card, index) => (
           <div
             key={index}
-            className="bg-white border border-gray-200 rounded-lg shadow-lg p-4"
+            className="bg-white border border-gray-200 rounded-lg p-4"
           >
             <h3 className="text-sm font-medium text-gray-500 flex items-center gap-2">
               {card.icon}
@@ -178,40 +178,51 @@ export default function Integration() {
         ))}
       </section>
 
-      <section className="grid grid-cols-3 gap-4">
-        <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-2 col-span-2 h-full">
+      <section className="grid grid-cols-2 gap-4">
+        <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-4 col-span-1 flex flex-col min-h-[500px]">
           <h3 className="text-md font-medium text-gray-500">Faturamento geral</h3>
-          <Bar
-            className="h-[400px]"
-            data={barData}
-            options={{
-              responsive: true,
-              plugins: { legend: { position: "top", align: "end" } },
-            }}
-          />
-        </div>
-
-        <div className="grid grid-rows-2 gap-4 col-span-1 h-200">
-          <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-2">
-            <h3 className="text-md font-medium text-gray-500">Atendimentos x Convênios</h3>
-            <Doughnut
-              data={atendimentoConvenio}
+          <div className="flex-grow">
+            <Bar
+              className="w-full h-full"
+              data={barData}
               options={{
                 responsive: true,
-                plugins: { legend: { position: 'right' } }
+                maintainAspectRatio: false,
+                plugins: { legend: { position: "top", align: "end" } },
               }}
             />
           </div>
+        </div>
 
-          <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-2">
+        <div className="grid grid-rows-2 gap-4 col-span-1 min-h-[500px]">
+          <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-4 flex flex-col">
+            <h3 className="text-md font-medium text-gray-500">Atendimentos x Convênios</h3>
+            <div className="flex-grow">
+              <Doughnut
+                className="w-full h-full"
+                data={atendimentoConvenio}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  plugins: { legend: { position: 'right' } }
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-4 flex flex-col">
             <h3 className="text-md font-medium text-gray-500">Atendimentos x Procedimentos</h3>
-            <Doughnut
-              data={atendimentoProcedimento}
-              options={{
-                responsive: true,
-                plugins: { legend: { position: 'right' } }
-              }}
-            />
+            <div className="flex-grow">
+              <Doughnut
+                className="w-full h-full"
+                data={atendimentoProcedimento}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  plugins: { legend: { position: 'right' } }
+                }}
+              />
+            </div>
           </div>
         </div>
       </section>

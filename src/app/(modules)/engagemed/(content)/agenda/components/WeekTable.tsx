@@ -150,7 +150,7 @@ const WeekTable: React.FC = () => {
       <Dialog open={isModalCreateOpen} onOpenChange={setIsModalCreateOpen}>
         <DialogOverlay className="fixed inset-0 bg-black/50" />
         <DialogContent className="fixed bg-white p-6 rounded-lg shadow-lg top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[90vh] overflow-y-auto w-[700px] max-w-3xl">
-          <DialogTitle className="text-lg font-semibold mb-4">Novo modelo</DialogTitle>
+          <DialogTitle className="text-lg font-semibold mb-4">Novo agendamento</DialogTitle>
           <div className="gap-4">
             <div>
               <h1 className="mt-2 mb-4 text-[16px]">Escolha o tipo de modelo que deseja criar:</h1>

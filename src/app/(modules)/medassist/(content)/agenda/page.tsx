@@ -193,14 +193,14 @@ export default function Dashboard() {
                 )}
 
                 {selectedCategory === 'semanal' && (
-                    <div className="grid grid-cols-3 gap-4">
-                        <div>
-                            <div className="col-span-1 flex">
+                    <div className="flex gap-4 w-full">
+                        <div className="w-[250px]">
+                            <div className="flex">
                                 <Calendar
                                     mode="single"
                                     selected={date}
                                     onSelect={setDate}
-                                    className="rounded-md border"
+                                    className="rounded-md border w-full"
                                 />
                             </div>
                             <div className="mt-4 border rounded p-3">
@@ -237,7 +237,8 @@ export default function Dashboard() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-span-2 grid grid-cols-7">
+
+                        <div className="flex-1 grid grid-cols-7">
                             {["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SAB"].map((day) => (
                                 <div key={day} className="text-center border font-bold p-2">{day}</div>
                             ))}
@@ -262,17 +263,17 @@ export default function Dashboard() {
                 )}
 
                 {selectedCategory === 'diária' && (
-                    <div className="grid grid-cols-3 gap-4">
-                        <div className="col-span-1">
-                            <div className="">
+                    <div className="flex gap-4 w-full">
+                        <div className="w-[250px]">
+                            <div className="flex items-center justify-start w-full">
                                 <Calendar
                                     mode="single"
                                     selected={date}
                                     onSelect={setDate}
-                                    className="rounded-md border"
+                                    className="rounded-md border w-full"
                                 />
                             </div>
-                            <div className="mt-4 border rounded p-3">
+                            <div className="mt-4 border rounded p-3 w-full">
                                 <h1 className="mb-3 border-b">Status</h1>
                                 {[
                                     { label: "Agendado", color: "#2955D9" },
@@ -288,9 +289,9 @@ export default function Dashboard() {
                                     </div>
                                 ))}
                             </div>
-                            <div className="mt-4 border rounded p-3">
+                            <div className="mt-4 border rounded p-3 w-full">
                                 <h1 className="mb-3 border-b">Tipo de consulta</h1>
-                                <div className="px-2 ">
+                                <div className="px-2">
                                     <div className="flex gap-2 items-center">
                                         <div className="w-6 h-8 rounded flex items-center justify-center border bg-[#EBEBEC]">1</div>
                                         <h1>Primeira consulta</h1>
@@ -306,9 +307,10 @@ export default function Dashboard() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-span-2 bg-[#FFFFFF]">
+
+                        <div className="flex-1 bg-[#FFFFFF]">
                             <div className="border rounded p-2  w-full">
-                                <div className="flex items-end justify-between bg-[#FAFAFA] border-l-[4px] border-[#E7A113] rounded">
+                                <div className="flex items-end justify-between bg-[#FAFAFA] border-l-[4px] border-[#E7A113] mb-6 rounded">
                                     <div className="px-2">
                                         <h1 className="mb-4">Rosana Guimarães dos Santos</h1>
                                         <h1>Convênio - Unimed</h1>
@@ -318,7 +320,7 @@ export default function Dashboard() {
                                         <ArrowRight />
                                     </Button>
                                 </div>
-                                <div className="flex items-end mt-2 justify-between bg-[#FAFAFA] border-l-[4px] border-[#22B257] rounded">
+                                <div className="flex items-end mt-2 justify-between bg-[#FAFAFA] border-l-[4px] border-[#22B257] mb-6 rounded">
                                     <div className="px-2">
                                         <h1 className="mb-4">Rosana Guimarães dos Santos</h1>
                                         <h1>Convênio - Unimed</h1>
@@ -328,7 +330,7 @@ export default function Dashboard() {
                                         <ArrowRight />
                                     </Button>
                                 </div>
-                                <div className="flex items-end mt-2 justify-between bg-[#FAFAFA] border-l-[4px] border-[#27B9F2] rounded">
+                                <div className="flex items-end mt-2 justify-between bg-[#FAFAFA] border-l-[4px] border-[#27B9F2] mb-6 rounded">
                                     <div className="px-2">
                                         <h1 className="mb-4">Rosana Guimarães dos Santos</h1>
                                         <h1>Convênio - Unimed</h1>

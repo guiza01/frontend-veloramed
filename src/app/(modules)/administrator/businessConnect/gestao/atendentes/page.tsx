@@ -267,33 +267,32 @@ export default function AtendentesList() {
                     <DialogTitle className="text-lg font-semibold mb-4">Cadastro de Profissional</DialogTitle>
 
                     <div className="flex justify-between border rounded px-6 py-3 gap-4 my-4">
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 flex-1">
                             <div
-                                className={`w-8 h-8 flex items-center justify-center rounded-full border-2 border-black ${step >= 2 ? "bg-black text-white" : "text-black"
-                                    }`}
+                                className={`w-8 h-8 flex items-center justify-center rounded-full border-2 border-black ${step >= 2 ? "bg-black text-white" : "text-black"}`}
                             >
                                 {step >= 2 ? <Check size={16} /> : "1"}
                             </div>
-                            <label>Informações Pessoais</label>
+                            <label>Informações <br /> Pessoais</label>
                         </div>
 
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 flex-1 justify-start">
                             <div
                                 className={`w-8 h-8 flex items-center justify-center rounded-full border-2 ${step === 2 ? "border-black" : ""}`}
                             >
                                 2
                             </div>
-                            <label>Resumo Profissional</label>
+                            <label>Senha</label>
                         </div>
                     </div>
 
                     {step === 1 && (
                         <div>
                             <span className='text-[14px]'>Nome completo <span className='text-[red]'>*</span></span>
-                            <Input placeholder="Nome completo" className="mb-6" />
+                            <Input placeholder="Nome completo" className="mb-6 mt-2" />
 
                             <span className='text-[14px]'>E-mail <span className='text-[red]'>*</span></span>
-                            <Input placeholder="E-mail" className="mb-6" />
+                            <Input placeholder="E-mail" className="mb-6 mt-2" />
 
                             <span className='text-[14px]'>
                                 Senha <span className='text-[red]'>*</span>
@@ -302,7 +301,7 @@ export default function AtendentesList() {
                                 <Input
                                     type={showPassword ? "text" : "password"}
                                     placeholder="********"
-                                    className="mb-6 pr-10"
+                                    className="mb-6 mt-2 pr-10"
                                 />
                                 <button
                                     type="button"
@@ -314,10 +313,10 @@ export default function AtendentesList() {
                             </div>
 
                             <span className='text-[14px]'>Recepção <span className='text-[red]'>*</span></span>
-                            <Input placeholder="Recepção" className="mb-6" />
+                            <Input placeholder="Recepção" className="mb-6 mt-2" />
 
                             <span className='text-[14px]'>Foto do Profissional <span className='text-[red]'>*</span></span>
-                            <div className="flex flex-col items-center">
+                            <div className="flex flex-col items-center mt-2">
                                 <label
                                     htmlFor="fileUpload"
                                     className="cursor-pointer flex w-full items-center justify-center gap-2 bg-[#FAFAFA] px-4 py-2 rounded-lg border border-black border-dashed hover:bg-gray-300 transition"
@@ -349,7 +348,7 @@ export default function AtendentesList() {
                                 <Input
                                     type={showPassword ? "text" : "password"}
                                     placeholder="********"
-                                    className="mb-6 pr-10"
+                                    className="mb-6 mt-2 pr-10"
                                 />
                                 <button
                                     type="button"
@@ -366,7 +365,7 @@ export default function AtendentesList() {
                                 <Input
                                     type={showPassword ? "text" : "password"}
                                     placeholder="********"
-                                    className="mb-6 pr-10"
+                                    className="mb-6 mt-2 pr-10"
                                 />
                                 <button
                                     type="button"
@@ -383,7 +382,7 @@ export default function AtendentesList() {
                                 <Input
                                     type={showPassword ? "text" : "password"}
                                     placeholder="********"
-                                    className="mb-6 pr-10"
+                                    className="mb-6 mt-2 pr-10"
                                 />
                                 <button
                                     type="button"

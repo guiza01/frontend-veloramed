@@ -6,9 +6,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogOverlay, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { ChevronLeft, ChevronRight, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import React from "react";
 import { useState } from "react";
 import { FiTrash2 } from "react-icons/fi";
@@ -52,13 +52,13 @@ export default function TabelaDePrecos() {
 
     const data = selectedCategory === 'profissionais' ? profissionais
         : selectedCategory === 'equipamentos' ? equipamentos
-        : procedimentos;
+            : procedimentos;
 
 
     return (
         <div className="mx-auto min-h-screen p-4 bg-[#FAFAFA] flex flex-col">
             <div className="flex justify-between py-4">
-                <h1 className="text-xl flex items-center font-bold">Cadastro de Tabela de Valores</h1>
+                <h1 className="text-xl flex items-center font-bold">Cadastro de Agenda</h1>
                 <div className="flex items-center gap-4">
                     <div className="relative w-full">
                         <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
@@ -145,36 +145,52 @@ export default function TabelaDePrecos() {
                 ))}
             </div>
 
-            <div className="bg-[#FFFFFF] shadow flex justify-between items-center p-4 mt-auto">
-                <PaginationPrevious className="text-gray-700 hover:bg-gray-200 p-2 rounded">
-                    <ChevronLeft size={18} className="mr-2" />
-                    Anterior
-                </PaginationPrevious>
-
-                <Pagination className="flex space-x-2">
-                    <PaginationContent>
-                        {[1, 2, '...', 9, 10].map((num, idx) => (
-                            <React.Fragment key={idx}>
-                                {num === '...' ? (
-                                    <PaginationEllipsis />
-                                ) : (
-                                    <PaginationItem
-                                        isActive={num === 1}
-                                        className={`px-3 py-1 rounded-full text-center cursor-pointer ${num === 1 ? 'bg-blue-500 text-white' : 'text-gray-700 hover:bg-gray-100'
-                                            }`}
-                                    >
-                                        {num}
-                                    </PaginationItem>
-                                )}
-                            </React.Fragment>
-                        ))}
+            <div className="overflow-x-auto mt-auto">
+                <Pagination className="w-full mt-4">
+                    <PaginationContent className="flex w-full justify-between bg-white rounded-md py-2">
+                        <PaginationItem>
+                            <PaginationPrevious href="#" />
+                        </PaginationItem>
+                        <div className="flex">
+                            <PaginationItem>
+                                <PaginationLink href="#" isActive className="bg-[#2955D9] text-xs rounded-[8px]">
+                                    <span className="text-white">1</span>
+                                </PaginationLink>
+                            </PaginationItem>
+                            <PaginationItem>
+                                <PaginationLink className="text-xs" href="#">
+                                    2
+                                </PaginationLink>
+                            </PaginationItem>
+                            <PaginationItem>
+                                <PaginationLink className="text-xs" href="#">
+                                    3
+                                </PaginationLink>
+                            </PaginationItem>
+                            <PaginationItem>
+                                <PaginationEllipsis className="text-xs" />
+                            </PaginationItem>
+                            <PaginationItem>
+                                <PaginationLink className="text-xs" href="#">
+                                    8
+                                </PaginationLink>
+                            </PaginationItem>
+                            <PaginationItem>
+                                <PaginationLink className="text-xs" href="#">
+                                    9
+                                </PaginationLink>
+                            </PaginationItem>
+                            <PaginationItem>
+                                <PaginationLink className="text-xs" href="#">
+                                    10
+                                </PaginationLink>
+                            </PaginationItem>
+                        </div>
+                        <PaginationItem>
+                            <PaginationNext href="#" />
+                        </PaginationItem>
                     </PaginationContent>
                 </Pagination>
-
-                <PaginationNext className="text-gray-700 hover:bg-gray-200 p-2 rounded">
-                    Próximo
-                    <ChevronRight size={18} className="ml-2" />
-                </PaginationNext>
             </div>
 
             <Dialog open={isModalCreateOpen} onOpenChange={setIsModalCreateOpen}>
